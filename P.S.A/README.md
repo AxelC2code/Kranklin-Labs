@@ -2,7 +2,7 @@
 
 Sistema académico familiar desarrollado con **Google Apps Script + Google Sheets**.
 
-## Propósito
+## Proposito
 Ayudar a Gabriel a organizar su ciclo académico, registrar cursos y horarios, administrar compromisos, planificar su semana, ejecutar actividades, registrar asistencia y evidencias, y permitir la supervisión familiar con roles diferenciados.
 
 ## Flujo maestro
