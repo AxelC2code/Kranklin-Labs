@@ -1,0 +1,2 @@
+link del proyecto: https://docs.google.com/document/d/1dWrOTuTMN4VIoK6Lp3YuO0MKk4Nr0l9H/edit?usp=sharing&ouid=118408158871636627804&rtpof=true&sd=true
+link de la tarea para hacer: https://docs.google.com/document/d/1clNWTSt_UT4z5A-Rdc4lkl96waiIZPDH/edit?usp=sharing&ouid=118408158871636627804&rtpof=true&sd=true
