@@ -1,0 +1,696 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root{--navy:#123251;--navy2:#0c2640;--blue:#2474b5;--bg:#f4f7fa;--ink:#12253a;--muted:#667789;--line:#d7e0e8;--green:#1b8a50;--amber:#c07b0a;--red:#b93b33;--sky:#eaf3fa;--white:#fff}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,sans-serif}.shell{min-height:100vh;display:grid;grid-template-columns:300px 1fr}.side{background:var(--navy);color:#fff;padding:18px 18px 22px;position:sticky;top:0;height:100vh;overflow:auto}.brand{font-weight:900;font-size:18px;line-height:1.15}.tag{font-size:12px;opacity:.75;margin:10px 0 16px}.user{border:1px solid #ffffff1f;border-radius:16px;padding:16px;margin-bottom:18px}.user strong{display:block;font-size:18px}.user span{display:block;margin-top:4px;color:#c6d8e8}.user button{margin-top:10px;border:0;background:none;color:#9ec3df;cursor:pointer;padding:0;font-size:14px}.nav{display:grid;gap:6px}.nav-group{font-size:11px;color:#8ec1e5;letter-spacing:.08em;font-weight:800;text-transform:uppercase;margin-top:14px;padding-top:14px;border-top:1px solid #ffffff17}.nav-group.secondary{opacity:.55}.nav button{border:0;background:none;color:#fff;text-align:left;padding:11px 12px;border-radius:12px;cursor:pointer;font-size:15px}.nav button.active,.nav button:hover{background:#ffffff12}.nav button.muted{opacity:.75}.main{min-width:0}.top{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 30px;position:sticky;top:0;z-index:4}.top h1{margin:0;font-size:20px}.content{padding:28px;max-width:1550px;margin:auto}.hero{background:linear-gradient(120deg,var(--navy),#2d6089);color:#fff;border-radius:20px;padding:24px 28px;display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:18px}.hero h2{margin:0 0 8px;font-size:30px}.hero p{margin:0;opacity:.86;max-width:860px}.semaforo{padding:10px 16px;border-radius:999px;font-weight:800;background:#ffffff1e}.semaforo.ROJO{background:#b93b33}.semaforo.AMARILLO{background:#f2c45d;color:#4f3c00}.semaforo.VERDE{background:#208553}.semaforo.AZUL{background:#2474b5}.semaforo.GRIS{background:#e6ebef;color:#324250}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.two{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:16px}.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 18px #17324d0c}.metric small{color:var(--muted);display:block;font-size:13px}.metric strong{display:block;font-size:38px;margin-top:12px}.metric .sub{font-size:12px;color:var(--muted);margin-top:6px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.section-title h3{margin:0;font-size:18px}.subtle{color:var(--muted)}.btn{border:0;background:var(--blue);color:#fff;border-radius:10px;padding:11px 15px;font-weight:800;cursor:pointer}.btn.secondary{background:#ebf3f9;color:var(--navy)}.btn.danger{background:var(--red)}.btn.ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}.btn.small{padding:7px 10px;font-size:12px}.list{display:grid;gap:10px}.item{border-bottom:1px solid var(--line);padding:10px 0}.item:last-child{border-bottom:0}.item strong{display:block}.item small{display:block;color:var(--muted);margin-top:3px}.pill{display:inline-block;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:800;background:var(--sky);color:var(--navy)}.pill.ROJO{background:#fdeceb;color:#992d29}.pill.AMARILLO{background:#fff4d7;color:#8c5f00}.pill.VERDE{background:#e8f7ef;color:#17663a}.pill.GRIS{background:#eef2f5;color:#586674}.pill.AZUL{background:#e8f3fb;color:#17679f}.view{display:none}.view.active{display:block}.table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:16px}.table-note{margin-top:10px;color:var(--muted);font-size:12px}table{border-collapse:collapse;width:100%;min-width:760px}th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:13px;vertical-align:top}th{background:#edf4f9;color:var(--navy);font-size:11px;text-transform:uppercase}tr:last-child td{border-bottom:0}.empty{padding:28px;color:var(--muted);text-align:center}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:12px;color:var(--muted);font-weight:800}.field input,.field select,.field textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit}.field textarea{min-height:90px;resize:vertical}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.login-screen{display:none;min-height:100vh;background:#eef3f7;align-items:center;justify-content:center;padding:20px}.login-card{background:#fff;width:min(430px,100%);border:1px solid var(--line);border-radius:18px;padding:28px}.login-card h1{margin:10px 0 8px}.modal{display:none;position:fixed;inset:0;background:#0b1b2b88;z-index:15;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.dialog{background:#fff;width:min(900px,100%);max-height:90vh;overflow:auto;border-radius:18px;padding:22px}.dialog-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.dialog-head h3{margin:0}.close{border:0;background:none;font-size:26px;cursor:pointer}.toast{position:fixed;right:20px;bottom:20px;background:var(--navy);color:#fff;padding:13px 16px;border-radius:10px;z-index:30;transform:translateY(130px);transition:.25s}.toast.show{transform:translateY(0)}.progress{height:8px;background:#e9edf1;border-radius:999px;overflow:hidden;margin:8px 0}.progress span{display:block;height:100%;background:var(--green)}.attendance-bar{height:12px;background:#e9edf1;border-radius:999px;overflow:hidden}.attendance-bar span{display:block;height:100%;background:var(--blue)}.home-pending{max-height:380px;overflow:auto}.calendar-box{background:#f8fbfd;border:1px dashed #d4e3ee;border-radius:14px;padding:14px}.status-card{display:flex;justify-content:space-between;gap:14px;align-items:center}.minor-title{font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}.journey{display:grid;grid-template-columns:1fr 80px 1fr;gap:10px;align-items:center;margin-bottom:18px}.journey-node{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}.journey-node.secondary{opacity:.65}.journey-line{height:4px;background:#d8e4ee;border-radius:999px}.note-box{padding:12px 14px;background:#f8fbfd;border:1px solid var(--line);border-radius:12px;margin-top:10px}.compact .metric strong{font-size:28px}.warning{color:var(--red);font-weight:700}.traffic-light{display:inline-block;width:15px;height:15px;border-radius:50%;box-shadow:0 0 0 3px #0000000b;vertical-align:middle}.traffic-light.ROJO{background:#d43c34}.traffic-light.AMARILLO{background:#f2b51d}.traffic-light.VERDE{background:#28a65a}.traffic-light.GRIS{background:#aeb8c1}.traffic-light.AZUL{background:#2784c7}.member-list{display:grid;gap:9px}.member-row{display:grid;grid-template-columns:1fr 220px auto;gap:9px;align-items:end}.conditional{display:none}.conditional.show{display:grid}.status-stack{display:flex;align-items:center;gap:9px}.status-stack small{display:block;color:var(--muted)}
+    .home-hero{background:linear-gradient(135deg,#102f4d,#235f8b);color:#fff;border-radius:20px;padding:24px 26px;margin-bottom:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center}.home-hero h2{margin:4px 0 8px;font-size:30px;line-height:1.12}.home-hero p{margin:0;max-width:760px;color:#dce9f3;line-height:1.5}.hero-kicker{font-size:11px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:#9dd0f2}.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.hero-actions .btn{box-shadow:none}.hero-status{min-width:150px;text-align:center;background:#ffffff16;border:1px solid #ffffff28;border-radius:16px;padding:14px}.hero-status .traffic-light{width:20px;height:20px;margin-bottom:8px}.hero-status strong,.hero-status small{display:block}.hero-status small{margin-top:4px;color:#d8e7f1}.coach-strip{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px 16px;margin-bottom:16px}.coach-mark{width:42px;height:42px;border-radius:13px;background:#eaf3fa;color:var(--navy);display:grid;place-items:center;font-weight:900}.coach-strip strong,.coach-strip small{display:block}.coach-strip small{color:var(--muted);margin-top:3px}.coach-link{font-size:12px;font-weight:800;color:var(--blue);text-decoration:none}.focus-panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:17px;margin-bottom:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center}.focus-panel h3{margin:3px 0 5px;font-size:19px}.focus-panel p{margin:0;color:var(--muted)}.home-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(310px,.65fr);gap:16px}.quick-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px}.quick-metric{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 15px}.quick-metric small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;font-weight:800;letter-spacing:.05em}.quick-metric strong{display:block;font-size:25px;margin-top:5px}.action-list{display:grid;gap:8px}.action-item{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:11px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff}.action-item:hover{border-color:#a8c9df;background:#fbfdff}.action-item .traffic-light{width:12px;height:12px}.action-item strong{display:block;font-size:14px}.action-item small{display:block;color:var(--muted);margin-top:3px}.action-item .btn{padding:7px 10px;font-size:11px}.today-class{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}.today-class:last-child{border-bottom:0}.today-class time{font-weight:900;color:var(--navy)}.today-class strong,.today-class small{display:block}.today-class small{color:var(--muted);margin-top:3px}.coach-footer{text-align:center;color:var(--muted);font-size:11px;padding:22px 10px 5px}.coach-footer strong{color:var(--navy)}
+    @media(max-width:1100px){.home-hero,.focus-panel{grid-template-columns:1fr}.hero-status{text-align:left;min-width:0}.home-grid{grid-template-columns:1fr}.quick-metrics{grid-template-columns:repeat(2,1fr)}.coach-strip{grid-template-columns:auto 1fr}.coach-link{grid-column:2}.shell{grid-template-columns:1fr}.side{height:auto;position:static}.grid,.grid.three,.three-col,.two,.form-grid{grid-template-columns:1fr 1fr}.journey{grid-template-columns:1fr}.journey-line{height:30px;width:4px;margin:auto}}
+    @media(max-width:700px){.home-hero{padding:20px}.home-hero h2{font-size:25px}.quick-metrics{grid-template-columns:1fr 1fr}.coach-strip{grid-template-columns:auto 1fr}.coach-link{grid-column:1/-1}.action-item{grid-template-columns:auto minmax(0,1fr)}.action-item .btn{grid-column:2;width:100%}.today-class{grid-template-columns:55px 1fr}.today-class .btn{grid-column:2;width:100%}.member-row{grid-template-columns:1fr}.member-row .btn{width:100%}.content{padding:16px}.top{padding:0 16px}.grid,.grid.three,.three-col,.two,.form-grid{grid-template-columns:1fr}.hero{display:block}.hero h2{font-size:26px}}
+  
+.schedule-line{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0;border-bottom:1px dashed #d8e2ec}.schedule-line:last-child{border-bottom:0}.course-actions{display:flex;gap:6px;flex-wrap:wrap}.btn.tiny{padding:4px 8px;font-size:12px}.btn.primary-soft{background:#e7f2ff;color:#0b5fa5;border:1px solid #bedcff}.btn.primary-soft:hover{background:#d7eaff}@media(max-width:760px){#view-cursos .table-wrap table,#view-cursos .table-wrap thead,#view-cursos .table-wrap tbody,#view-cursos .table-wrap th,#view-cursos .table-wrap td,#view-cursos .table-wrap tr{display:block}#view-cursos .table-wrap thead{display:none}#view-cursos .table-wrap tr{background:#fff;border:1px solid #dce6ef;border-radius:14px;margin-bottom:12px;padding:12px}#view-cursos .table-wrap td{border:0;padding:6px 0}#view-cursos .table-wrap td:before{content:attr(data-label);display:block;font-size:11px;font-weight:700;color:#65758a;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}.course-actions .btn{flex:1 1 auto}.schedule-line{align-items:flex-start}}
+
+    .work-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:14px}.work-head h3{margin:3px 0 5px;font-size:24px}.work-head p{margin:0;color:var(--muted)}.eyebrow{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--blue)}
+    .active-work{margin-bottom:14px}.active-work-card{background:linear-gradient(135deg,#102f4d,#1f5d8b);color:#fff;border-radius:16px;padding:17px 18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}.active-work-card.empty-state{background:#fff;color:var(--ink);border:1px dashed var(--line)}.active-work-card h3{margin:3px 0 5px;font-size:20px}.active-work-card p{margin:0;color:#dce9f3}.active-work-card.empty-state p{color:var(--muted)}.work-timer{font-size:24px;font-weight:900;margin-top:8px}.active-work-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.active-work-card .btn.secondary{background:#fff;color:var(--navy)}
+    .work-layout{display:grid;grid-template-columns:minmax(380px,.9fr) minmax(520px,1.1fr);gap:14px}.work-pending-list{display:grid;gap:8px;max-height:620px;overflow:auto;padding-right:3px}.work-task{border:1px solid var(--line);border-radius:12px;padding:11px;background:#fff;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center}.work-task.selected{border-color:var(--blue);box-shadow:0 0 0 2px #2474b51a}.urgency-dot{width:12px;height:12px;border-radius:50%}.urgency-dot.overdue,.urgency-dot.today{background:var(--red)}.urgency-dot.soon{background:#f2b51d}.urgency-dot.later{background:var(--green)}.urgency-dot.none{background:#aeb8c1}.task-main strong{display:block}.task-main small{display:block;color:var(--muted);margin-top:3px}.task-progress{font-size:12px;font-weight:800;color:var(--navy);margin-top:5px}.task-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.week-nav{display:flex;gap:5px}.week-label{font-size:12px;color:var(--muted);font-weight:800;margin-bottom:8px}.week-calendar{display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));border:1px solid var(--line);border-radius:12px;overflow:auto}.week-day{min-height:250px;border-right:1px solid var(--line);background:#fff}.week-day:last-child{border-right:0}.week-day-head{padding:9px;background:#f3f7fa;border-bottom:1px solid var(--line);font-size:11px;text-transform:uppercase;font-weight:900;color:var(--navy);position:sticky;top:0}.week-day-head.today{background:#dfeefa}.week-events{padding:7px;display:grid;gap:6px}.cal-event{border-radius:8px;padding:7px 8px;font-size:11px;cursor:pointer;border-left:4px solid var(--blue);background:#eef6fb}.cal-event.deadline{border-left-color:var(--amber);background:#fff7e5}.cal-event.overdue{border-left-color:var(--red);background:#fdeceb}.cal-event.class-event{border-left-color:#6e5bb7;background:#f1edfb}.cal-event strong,.cal-event span{display:block}.cal-event span{color:var(--muted);margin-top:2px}.work-bottom{display:grid;grid-template-columns:.7fr 1.3fr;gap:14px;margin-top:14px}.week-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.week-metric{background:#f7fafc;border:1px solid var(--line);border-radius:11px;padding:11px}.week-metric small{display:block;color:var(--muted)}.week-metric strong{font-size:22px;display:block;margin-top:4px}.recent-reports{display:grid;gap:8px}.report-row{display:grid;grid-template-columns:90px minmax(0,1fr) auto;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:8px 0}.report-row:last-child{border-bottom:0}.report-row small{color:var(--muted);display:block;margin-top:2px}
+
+    .attendance-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:14px}.attendance-head h3{margin:0 0 4px;font-size:22px}.attendance-head p{margin:0;color:var(--muted)}.attendance-today-card{margin-bottom:12px;padding:16px}.attendance-today-list{display:grid;gap:8px}.attendance-today-row{display:grid;grid-template-columns:72px minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}.attendance-today-row:last-child{border-bottom:0}.attendance-time{font-weight:900;font-size:16px;color:var(--navy)}.attendance-time small{display:block;font-weight:500;color:var(--muted);font-size:11px}.attendance-class strong,.attendance-class span{display:block}.attendance-class span{color:var(--muted);font-size:12px;margin-top:2px}.attendance-status{display:inline-flex;align-items:center;white-space:nowrap;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:800}.attendance-status.pending{background:#fdeceb;color:#992d29}.attendance-status.present{background:#e8f7ef;color:#17663a}.attendance-status.late{background:#fff4d7;color:#8c5f00}.attendance-status.absent{background:#edf0f2;color:#293744}.attendance-status.justified{background:#e8f3fb;color:#17679f}.attendance-status.upcoming{background:#eef2f5;color:#586674}.attendance-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}.attendance-metric{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 15px}.attendance-metric small{display:block;color:var(--muted);font-size:12px}.attendance-metric strong{display:block;font-size:25px;margin-top:5px}.attendance-metric.alert{border-color:#efb2ae;background:#fff8f7}.attendance-metric.alert strong{color:var(--red)}.attendance-progress-card{padding:15px;margin-bottom:12px}.attendance-progress-line{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}.attendance-progress-line div strong,.attendance-progress-line div span{display:block}.attendance-progress-line div span{color:var(--muted);font-size:12px;margin-top:2px}.attendance-progress-line>strong{font-size:22px}.attendance-progress-line>strong.good{color:var(--green)}.attendance-progress-line>strong.warn{color:var(--amber)}.attendance-progress-line>strong.bad{color:var(--red)}.attendance-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px}.upcoming-classes,.attendance-course-summary{display:grid;gap:0}.upcoming-class-row{display:grid;grid-template-columns:110px minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}.upcoming-class-row:last-child{border-bottom:0}.upcoming-class-row div strong,.upcoming-class-row div span{display:block}.upcoming-class-row div span{font-size:11px;color:var(--muted);margin-top:2px}.course-attendance-row{display:grid;grid-template-columns:minmax(0,1fr) 95px;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}.course-attendance-row:last-child{border-bottom:0}.course-attendance-row div>strong,.course-attendance-row div>span{display:block}.course-attendance-row div>span{font-size:11px;color:var(--muted);margin-top:3px}.course-rate{text-align:right}.course-rate>strong{font-size:16px}.mini-progress{height:5px;background:#e9edf1;border-radius:999px;overflow:hidden;margin-top:5px}.mini-progress span{display:block;height:100%;background:var(--blue)}.compact-empty{padding:16px}.attendance-bar{height:10px}
+
+    @media(max-width:1000px){.work-layout,.work-bottom{grid-template-columns:1fr}.week-calendar{grid-template-columns:repeat(7,minmax(135px,1fr))}.active-work-card{grid-template-columns:1fr}.active-work-actions{justify-content:flex-start}}
+    @media(max-width:700px){.work-head{align-items:stretch;flex-direction:column}.work-head .btn{width:100%}.work-task{grid-template-columns:auto 1fr}.task-actions{grid-column:1/-1;justify-content:stretch}.task-actions .btn{flex:1}.week-calendar{display:block;border:0}.week-day{min-height:auto;border:1px solid var(--line);border-radius:11px;margin-bottom:8px}.week-day-head{position:static}.work-bottom{grid-template-columns:1fr}.week-metrics{grid-template-columns:repeat(2,1fr)}.report-row{grid-template-columns:1fr}.active-work-actions .btn{flex:1}.attendance-head{flex-direction:column}.attendance-head .btn{width:100%}.attendance-metrics{grid-template-columns:repeat(2,1fr)}.attendance-grid{grid-template-columns:1fr}.attendance-today-row{grid-template-columns:58px minmax(0,1fr) auto}.attendance-today-row .btn{grid-column:1/-1;width:100%}.upcoming-class-row{grid-template-columns:74px minmax(0,1fr) auto}.upcoming-class-row .btn{grid-column:1/-1;width:100%}.attendance-status{font-size:10px;padding:5px 7px}}
+  
+    .top-actions,.toolbar-actions{display:flex;align-items:center;gap:8px}.compact-home{padding:18px 22px;margin-bottom:12px}.compact-home h2{font-size:26px;margin:0 0 5px}.compact-home p{font-size:14px}.compact-home .hero-actions{margin-top:12px}.compact-status{padding:10px 13px;min-width:135px}.coach-strip{padding:10px 14px;margin-bottom:12px}.coach-mark{width:36px;height:36px}.focus-panel{padding:13px 16px;margin-bottom:12px}.quick-metrics{margin-bottom:12px}.work-toolbar{margin-bottom:10px}.active-work:empty{display:none}.work-layout{margin-top:0}.week-nav{flex-wrap:wrap}.coach-footer{padding-top:14px}
+    .home-alerts{display:grid;gap:8px;margin-bottom:10px}.system-alert{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;border:1px solid #e7c56d;background:#fff9e8;border-radius:12px;padding:10px 12px}.system-alert.critical{border-color:#e5a9a5;background:#fff4f3}.system-alert .alert-icon{font-size:18px}.system-alert strong{display:block;font-size:13px}.system-alert small{display:block;color:var(--muted);margin-top:2px}.system-alert .btn{padding:7px 10px;font-size:11px}.coach-message{font-size:14px;font-weight:700;color:#e8f4fb;margin-top:5px}.home-hero.compact-home{padding:15px 18px}.home-hero.compact-home h2{font-size:24px}.home-hero.compact-home .hero-actions{margin-top:10px}.coach-strip.mini{grid-template-columns:auto 1fr auto;padding:8px 12px}.coach-strip.mini .coach-mark{width:30px;height:30px;border-radius:10px;font-size:12px}.home-zero-note{color:var(--muted);font-size:13px;margin-top:4px}.section-title.compact{margin-bottom:8px}.compact-empty{padding:14px}
+    @media(max-width:700px){.top{height:62px}.top h1{font-size:18px}.top-actions .btn{font-size:0;width:42px;height:42px;padding:0;border-radius:50%}.top-actions .btn:after{content:'+';font-size:24px}.compact-home{padding:16px}.compact-home h2{font-size:22px}.compact-status{display:none}.toolbar-actions{width:100%}.toolbar-actions .btn{flex:1}.work-toolbar{align-items:stretch;flex-direction:column}.focus-panel{grid-template-columns:1fr}.focus-panel .btn{width:100%}}
+
+    .family-wrap{display:grid;gap:12px}.family-status{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px}.family-status h2{margin:0 0 4px;font-size:22px}.family-status p{margin:0;color:var(--muted)}.family-status-badge{font-weight:900;border-radius:999px;padding:8px 12px;white-space:nowrap}.family-status-badge.good{background:#e8f7ef;color:#17663a}.family-status-badge.warn{background:#fff4d7;color:#8c5f00}.family-status-badge.bad{background:#fdeceb;color:#992d29}.family-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.family-metric{background:#fff;border:1px solid var(--line);border-radius:13px;padding:12px 14px}.family-metric small{display:block;color:var(--muted);font-size:11px}.family-metric strong{display:block;font-size:24px;margin-top:5px}.family-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:12px}.family-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px}.family-card h3{margin:0 0 10px;font-size:16px}.family-alert{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px;padding:9px 0;border-bottom:1px solid var(--line)}.family-alert:last-child{border-bottom:0}.family-alert strong{display:block;font-size:13px}.family-alert span{display:block;color:var(--muted);font-size:11px;margin-top:2px}.family-deadline{display:grid;grid-template-columns:85px minmax(0,1fr) 65px;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}.family-deadline:last-child{border-bottom:0}.family-deadline strong,.family-deadline span{display:block}.family-deadline span{font-size:11px;color:var(--muted)}.family-progress{height:10px;background:#e9edf1;border-radius:999px;overflow:hidden;margin:8px 0}.family-progress span{display:block;height:100%;background:var(--blue)}.family-today{font-size:13px;line-height:1.55}.family-today strong{color:var(--navy)}.family-empty{color:var(--muted);font-size:13px;padding:6px 0}.family-foot{color:var(--muted);font-size:11px}.family-login-note{margin-top:12px;padding:10px 12px;border-radius:10px;background:#f6f9fb;color:var(--muted);font-size:11px}
+    @media(max-width:800px){.family-grid{grid-template-columns:1fr}.family-metrics{grid-template-columns:repeat(2,1fr)}.family-status{grid-template-columns:1fr}.family-status-badge{justify-self:start}.family-deadline{grid-template-columns:72px minmax(0,1fr) 55px}}
+
+
+/* =========================================================
+   REDISEÑO VISUAL PREMIUM — v1
+   Capa exclusivamente visual. No modifica IDs ni lógica JS.
+   Paleta: #153462 · #4FA095 · #6DA1C2 · #F6F6C9 · #F0F2F5
+   ========================================================= */
+:root{
+  --navy:#153462;
+  --navy2:#0f294c;
+  --blue:#6DA1C2;
+  --teal:#4FA095;
+  --lime:#F6F6C9;
+  --bg:#F0F2F5;
+  --ink:#183248;
+  --muted:#6f7f8c;
+  --line:#dfe6e7;
+  --green:#2d936c;
+  --sky:#edf6f5;
+  --white:#fff;
+  --premium-shadow:0 20px 55px rgba(21,52,98,.12);
+}
+body{background:linear-gradient(180deg,#f8faf9 0%,var(--bg) 100%);}
+
+/* LOGIN */
+.login-screen{
+  background:
+    radial-gradient(circle at 13% 18%,rgba(246,246,201,.90) 0 9%,transparent 27%),
+    radial-gradient(circle at 88% 82%,rgba(79,160,149,.20) 0 8%,transparent 28%),
+    linear-gradient(135deg,#eef5f1 0%,#f7f8f5 45%,#e8f0ee 100%);
+  padding:34px 20px;
+  position:relative;
+  overflow:hidden;
+}
+.login-screen:before,.login-screen:after{content:'';position:absolute;border:1px solid rgba(79,160,149,.14);border-radius:50%;pointer-events:none}
+.login-screen:before{width:430px;height:430px;left:-210px;bottom:-230px}.login-screen:after{width:520px;height:520px;right:-300px;top:-320px}
+.login-card.premium-login-card{
+  width:min(960px,100%);
+  min-height:590px;
+  padding:0;
+  border:1px solid rgba(21,52,98,.10);
+  border-radius:28px;
+  display:grid;
+  grid-template-columns:minmax(330px,.82fr) minmax(430px,1.18fr);
+  overflow:hidden;
+  box-shadow:0 28px 80px rgba(15,41,76,.18);
+  position:relative;
+  z-index:1;
+}
+.login-brand-panel{
+  background:linear-gradient(155deg,#153462 0%,#205a6e 48%,#4FA095 100%);
+  color:#fff;
+  padding:52px 42px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  position:relative;
+  overflow:hidden;
+}
+.login-brand-panel:before{content:'';position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(246,246,201,.13);right:-95px;top:-65px}
+.login-brand-panel:after{content:'';position:absolute;width:160px;height:160px;border-radius:50%;border:1px solid rgba(255,255,255,.12);left:-60px;bottom:-60px}
+.login-brand-mark{width:78px;height:78px;display:grid;place-items:center;color:#F6F6C9;margin-bottom:25px;filter:drop-shadow(0 8px 18px rgba(0,0,0,.13))}
+.login-brand-mark svg{width:100%;height:100%}.login-brand-kicker{font-size:11px;font-weight:900;letter-spacing:.22em;color:#dcebe6;margin-bottom:8px}.login-brand-title{font-size:31px;line-height:1.06;font-weight:950;letter-spacing:-.025em}.login-brand-line{width:52px;height:3px;background:#F6F6C9;border-radius:10px;margin:22px 0 17px}.login-brand-panel p{font-weight:800;font-size:16px;margin:0 0 8px}.login-brand-panel small{max-width:270px;line-height:1.6;color:#e2eeeb;font-size:12px}.login-brand-orbit{position:absolute;border:1px solid rgba(246,246,201,.15);border-radius:50%}.orbit-one{width:280px;height:280px;right:-165px;bottom:30px}.orbit-two{width:360px;height:360px;right:-220px;bottom:-15px}
+.login-form-panel{padding:48px 52px 38px;background:rgba(255,255,255,.96);display:flex;flex-direction:column;justify-content:center}.login-form-head h1{font-size:34px;letter-spacing:-.03em;color:var(--navy);margin:8px 0 7px}.login-form-head .minor-title{color:var(--teal);font-weight:900}.login-form-head p{margin:0;line-height:1.55}.login-profile-preview{display:flex;gap:8px;margin-top:22px}.login-profile-preview span{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#f4f7f5;border:1px solid #e2e9e6;color:var(--navy);font-size:11px;font-weight:900}.login-profile-preview span:first-child{background:linear-gradient(145deg,#e7f3ef,#d7ebe5);border-color:#b9d9d0;color:#267467}.login-field label{color:#526a79;letter-spacing:.015em}.login-field select,.pin-wrap{border:1px solid #d7e1df;border-radius:13px;background:#fbfcfb;transition:.18s ease}.login-field select{padding:13px 14px;color:var(--navy);font-weight:750}.login-field select:focus,.pin-wrap:focus-within{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(79,160,149,.11);background:#fff}.pin-wrap{display:flex;align-items:center;padding-left:13px}.pin-wrap input{border:0!important;box-shadow:none!important;background:transparent!important;padding:13px 12px!important;font-size:19px;letter-spacing:.25em;color:var(--navy)}.pin-icon{font-size:9px;color:var(--teal)}.login-submit{min-height:49px;border-radius:13px;background:linear-gradient(105deg,#153462,#287b7a 65%,#4FA095);display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 9px 22px rgba(21,52,98,.18);transition:.2s ease}.login-submit:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(21,52,98,.22)}.login-security{font-size:11px;color:#71828e;margin-top:2px;padding:8px 0 14px;border-bottom:1px solid #edf1ef}.login-error{min-height:17px;margin:8px 0 0}.login-credit{display:grid;grid-template-columns:auto 1fr;gap:11px;align-items:center;padding-top:15px}.credit-avatar{width:37px;height:37px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:11px;font-weight:900}.login-credit strong,.login-credit span,.login-credit a{display:block}.login-credit strong{font-size:11px;color:var(--navy)}.login-credit span{font-size:9px;color:#71828e;margin-top:2px}.login-credit a{font-size:9px;color:#3a887f;text-decoration:none;margin-top:3px;font-weight:800}
+
+/* APP FRAME */
+.shell{grid-template-columns:285px 1fr;background:var(--bg)}
+.side{background:linear-gradient(180deg,#153462 0%,#102d50 72%,#0e2949 100%);display:flex;flex-direction:column;padding:22px 17px 18px;box-shadow:8px 0 28px rgba(15,41,76,.08);z-index:5}
+.brand-premium{font-size:19px;line-height:1.08;letter-spacing:-.02em;padding:4px 6px 0}.brand-mini{display:block;font-size:9px;letter-spacing:.19em;color:#9fd0c7;margin-bottom:5px}.tag{font-size:11px;color:#c8dbdf;opacity:1;padding:0 6px;margin:9px 0 17px}.user{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);border-radius:15px;padding:13px 14px}.user strong{font-size:15px}.user span{font-size:11px;color:#b9d0d7}.user button{color:#8fc6bd;font-size:11px}.nav{flex:1;gap:4px}.nav-group{font-size:9px;letter-spacing:.12em;color:#8ec6bf;border-top-color:#ffffff14;margin-top:10px;padding:12px 9px 3px}.nav button{font-size:13px;padding:10px 10px;border-radius:10px;color:#eef6f5;display:flex;align-items:center;gap:9px;transition:.15s ease}.nav button:before{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:7px;background:#ffffff0b;color:#b7dbd4;font-size:11px;flex:0 0 20px}.nav button[data-view="inicio"]:before{content:'⌂'}.nav button[data-view="trabajo"]:before{content:'✓'}.nav button[data-view="proyectos"]:before{content:'▣'}.nav button[data-view="asistencia"]:before{content:'◷'}.nav button[data-view="tableros"]:before{content:'▥'}.nav button[data-view="matricula"]:before{content:'◇'}.nav button[data-view="cursos"]:before{content:'▤'}.nav button[data-view="config"]:before{content:'⚙'}.nav button.active,.nav button:hover{background:linear-gradient(90deg,rgba(79,160,149,.38),rgba(79,160,149,.12));box-shadow:inset 3px 0 0 #78c5b8}.nav button.active:before{background:#4FA095;color:#fff}.side-credit{display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:center;border-top:1px solid #ffffff16;margin-top:14px;padding:16px 5px 2px}.side-credit-mark{width:30px;height:30px;border-radius:10px;background:#ffffff0d;border:1px solid #ffffff16;display:grid;place-items:center;font-size:9px;font-weight:900;color:#F6F6C9}.side-credit strong,.side-credit span,.side-credit a{display:block}.side-credit strong{font-size:9px;color:#eff7f5}.side-credit span{font-size:7.5px;color:#9eb6bf;line-height:1.25;margin-top:2px}.side-credit a{font-size:8px;color:#8fc6bd;text-decoration:none;margin-top:3px}
+.top{height:68px;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8e7;padding:0 26px}.top h1{font-size:18px;color:var(--navy);letter-spacing:-.015em}.content{padding:22px 24px 30px;max-width:1500px}
+.card,.table-wrap{border-color:#e1e7e6;box-shadow:0 8px 24px rgba(21,52,98,.045)}.card{border-radius:17px}.table-wrap{border-radius:17px}.btn{background:linear-gradient(100deg,#376f91,#4FA095);border-radius:10px;box-shadow:0 4px 10px rgba(21,52,98,.07);transition:.15s ease}.btn:hover{transform:translateY(-1px)}.btn.secondary{background:#edf5f2;color:#245d59}.btn.ghost{border-color:#d8e2df}.pill{background:#edf6f3;color:#2b7169}.section-title h3{color:var(--navy);letter-spacing:-.015em}
+.home-hero,.home-hero.compact-home{background:linear-gradient(118deg,#153462 0%,#236b72 55%,#4FA095 100%);border-radius:18px;box-shadow:0 16px 35px rgba(21,52,98,.13);position:relative;overflow:hidden}.home-hero:after{content:'';position:absolute;right:-45px;top:-85px;width:260px;height:260px;border-radius:50%;background:rgba(246,246,201,.10)}.home-hero>*,.home-hero.compact-home>*{position:relative;z-index:1}.hero-kicker{color:#c7e5df}.coach-message{color:#f0f7f4}.quick-metric{border-color:#e0e8e5;border-radius:15px;box-shadow:0 7px 18px rgba(21,52,98,.04);position:relative;overflow:hidden}.quick-metric:before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--teal),var(--blue))}.quick-metric strong{color:var(--navy)}.coach-strip{border-color:#dfe8e5}.coach-mark{background:linear-gradient(145deg,#e3f2ed,#f6f6c9);color:#276c66}.coach-link{color:#3a887f}.focus-panel{border-color:#dfe8e5}.progress span,.attendance-bar span,.mini-progress span,.family-progress span{background:linear-gradient(90deg,#4FA095,#6DA1C2)}
+th{background:#edf5f3;color:#285a66}.field input,.field select,.field textarea{border-color:#dce5e3}.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#79b7ad;box-shadow:0 0 0 3px rgba(79,160,149,.09)}
+
+@media(max-width:900px){.login-card.premium-login-card{grid-template-columns:1fr;max-width:580px}.login-brand-panel{min-height:230px;padding:34px 34px;justify-content:flex-start}.login-brand-mark{width:58px;height:58px;margin-bottom:13px}.login-brand-title{font-size:25px}.login-brand-line{margin:13px 0 10px}.login-brand-panel small{max-width:none}.login-form-panel{padding:34px}.login-screen{align-items:flex-start}.side-credit{display:none}}
+@media(max-width:560px){.login-screen{padding:14px}.login-card.premium-login-card{border-radius:21px}.login-brand-panel{padding:28px 26px;min-height:210px}.login-form-panel{padding:28px 24px}.login-form-head h1{font-size:29px}.login-profile-preview span{width:34px;height:34px}.shell{grid-template-columns:1fr}.content{padding:16px}.side{padding-bottom:14px}}
+
+
+/* UX FINAL — ruta, indicadores y jerarquía */
+.nav button[data-view="agenda"]:before{content:'▦'}.nav button[data-view="semana"]:before{content:'◫'}.nav button[data-view="supervision"]:before{content:'✓'}.nav button[data-view="cursos"]:before{content:'▤'}
+.role-guide{background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px 14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px}.role-guide strong{color:var(--navy)}.role-guide span{font-size:12px;color:var(--muted)}
+.week-route{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-bottom:14px}.route-step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;min-height:70px}.route-step b{display:block;font-size:11px;color:var(--navy)}.route-step span{font-size:10px;color:var(--muted)}.route-step.done{border-color:#9dcfc5;background:#f2faf7}.route-step.current{border-color:#6DA1C2;box-shadow:0 0 0 2px rgba(109,161,194,.12)}
+.master-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.master-kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.master-kpi small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;font-weight:800}.master-kpi strong{display:block;font-size:23px;margin-top:4px;color:var(--navy)}.master-kpi .kpi-status{font-size:10px;margin-top:4px;font-weight:800}.kpi-status.VERDE{color:#17663a}.kpi-status.AMARILLO{color:#8c5f00}.kpi-status.ROJO{color:#992d29}.kpi-status.GRIS{color:#687784}
+.context-message{border:1px solid #d8e7e3;background:linear-gradient(120deg,#f7fbfa,#f7f8e9);border-radius:14px;padding:13px 15px;margin-bottom:12px}.context-message .eyebrow{color:#4a8a81}.context-message h3{margin:3px 0 4px;color:var(--navy);font-size:17px}.context-message p{margin:0;color:#526777;font-size:13px;line-height:1.45}
+.omission-box{border:1px solid #efb8b3;background:#fff7f6;border-radius:12px;padding:11px 13px;margin:10px 0}.omission-box strong{color:#922f2a}.supervision-item{border:1px solid var(--line);border-radius:12px;padding:11px;margin-bottom:8px}.supervision-item .actions{margin-top:8px}
+.help-line{font-size:11px;color:var(--muted);margin-top:5px}.screen-intro{margin-bottom:14px}.screen-intro h2{margin:0 0 4px;color:var(--navy);font-size:22px}.screen-intro p{margin:0;color:var(--muted);font-size:13px}
+@media(max-width:800px){.week-route{grid-template-columns:1fr 1fr}.master-kpis{grid-template-columns:1fr 1fr}.role-guide{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.week-route,.master-kpis{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<section class="login-screen" id="loginScreen">
+  <div class="login-card premium-login-card">
+    <div class="login-brand-panel">
+      <div class="login-brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" role="img"><path d="M10 42V19c8-3 15-1 22 4v26c-7-5-14-7-22-4v-3Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M54 42V19c-8-3-15-1-22 4v26c7-5 14-7 22-4v-3Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M20 14h24M25 10h14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <div class="login-brand-kicker">CENTRO DE</div>
+      <div class="login-brand-title">PLANIFICACIÓN Y<br>SEGUIMIENTO ACADÉMICO</div>
+      <div class="login-brand-line"></div>
+      <p>Organiza tu ciclo. Cumple tus compromisos. Avanza con propósito.</p>
+      <small>Un espacio de acompañamiento académico, seguimiento y desarrollo personal.</small>
+      <div class="login-brand-orbit orbit-one"></div><div class="login-brand-orbit orbit-two"></div>
+    </div>
+
+    <div class="login-form-panel">
+      <div class="login-form-head">
+        <div class="minor-title">Acceso familiar</div>
+        <h1>Bienvenido</h1>
+        <p class="subtle">Selecciona tu perfil e ingresa tu PIN para continuar.</p>
+      </div>
+
+      <div class="login-profile-preview" aria-hidden="true">
+        <span>G</span><span>G</span><span>A</span><span>GC</span>
+      </div>
+
+      <div class="field login-field" style="margin-top:16px">
+        <label>Selecciona tu perfil</label>
+        <select id="loginProfile"><option value="GABRIEL">Gabriel</option><option value="GLORIA">Gloria</option><option value="ALEJANDRA">Alejandra</option><option value="ADMIN">Gerardo</option></select>
+      </div>
+      <div class="field login-field" style="margin-top:12px">
+        <label>Ingresa tu PIN</label>
+        <div class="pin-wrap"><span class="pin-icon">●</span><input id="loginPin" type="password" maxlength="4" inputmode="numeric" autocomplete="current-password" placeholder="••••" onkeydown="if(event.key==='Enter')loginFamily()"></div>
+      </div>
+      <button class="btn login-submit" style="width:100%;margin-top:18px" onclick="loginFamily()"><span>Ingresar</span><span aria-hidden="true">→</span></button>
+      <p id="loginError" class="warning login-error" style="font-size:12px"></p>
+      <div class="login-security">✓ Acceso protegido para los perfiles familiares autorizados.</div>
+      <div class="login-credit">
+        <div class="credit-avatar">GC</div>
+        <div><strong>Desarrollado por Gerardo Castro</strong><span>Especialista en Coach de Desarrollo Personal y Empresas Familiares</span><a href="https://www.superaloya.com" target="_blank" rel="noopener">www.superaloya.com</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="shell" id="appShell" style="display:none">
+  <aside class="side">
+    <div class="brand brand-premium"><span class="brand-mini">CENTRO DE</span>PLANIFICACIÓN Y SEGUIMIENTO ACADÉMICO</div>
+    <div class="tag">Organiza tu ciclo. Cumple tus compromisos. Avanza con propósito.</div>
+    <div class="user"><strong id="userName">Usuario</strong><span id="userRole"></span><button onclick="logoutFamily()">Cerrar sesión</button></div>
+    <nav class="nav" id="navArea">
+      <button data-view="inicio" class="active">Inicio</button>
+      <div class="nav-group" id="groupFollow">2. Seguimiento del ciclo</div>
+      <button data-view="agenda" data-permission="editAgenda">Agenda académica</button>
+      <button data-view="semana" data-permission="editWork">Organización semanal</button>
+      <button data-view="trabajo">Trabajo diario</button>
+      <button data-view="proyectos">Proyectos académicos</button>
+      <button data-view="asistencia">Asistencia y clases</button>
+      <button data-view="supervision" id="navSupervision" data-permission="superviseWeek">Supervisión semanal</button>
+      <button data-view="tableros">Tableros de control</button>
+      <div class="nav-group" id="groupPrep">1. Preparación del ciclo</div>
+      <button data-view="matricula" id="navMatricula">Datos de matrícula</button>
+      <button data-view="cursos" id="navCursos">Cursos y horarios</button>
+      <div class="nav-group" id="groupConfig" style="display:none">Configuración</div>
+      <button data-view="config" id="navConfig" style="display:none">Configuración general</button>
+    </nav>
+    <div class="side-credit">
+      <div class="side-credit-mark">GC</div>
+      <div><strong>Gerardo Castro</strong><span>Coach de Desarrollo Personal y Empresas Familiares</span><a href="https://www.superaloya.com" target="_blank" rel="noopener">www.superaloya.com</a></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="top">
+      <h1 id="pageTitle">Inicio</h1>
+      <div class="top-actions">
+        <button class="btn small" data-permission="editWork" onclick="openProject()">+ Nuevo proyecto</button>
+        <div id="adminTools" style="display:none"><label class="subtle" style="margin-right:8px">Vista de prueba:</label><select id="demoRole"><option value="GABRIEL">Gabriel</option><option value="GLORIA">Gloria</option><option value="ALEJANDRA">Alejandra</option><option value="ADMIN">Gerardo</option></select></div>
+      </div>
+    </header>
+    <div class="content">
+      <div class="role-guide" id="roleGuide"><div><strong id="roleGuideTitle">Tu centro académico</strong><br><span id="roleGuideText">Aquí verás lo que corresponde hacer ahora.</span></div><span class="pill" id="roleGuideBadge">Ruta clara</span></div>
+      <section class="view active" id="view-inicio">
+        <div id="contextMessage"></div><div id="masterIndicatorsHome" class="master-kpis" style="margin-bottom:12px"></div><div class="home-alerts" id="homeAlerts"></div>
+
+        <div class="home-hero compact-home">
+          <div>
+            <h2 id="heroTitle">Hola, Gabriel.</h2>
+            <div class="coach-message" id="coachMessage">Hoy avanzamos en lo que más importa.</div>
+            <p id="heroText"></p>
+            <div class="hero-actions" id="heroActions">
+              <button class="btn" onclick="goPrimaryAction()" id="primaryActionBtn">Trabajar ahora</button>
+            </div>
+          </div>
+          <div class="hero-status compact-status">
+            <span class="traffic-light GRIS" id="homeLightDot"></span>
+            <strong id="homeStatusText">Sin datos</strong>
+            <small id="homeStatusDetail">Cargando</small>
+          </div>
+        </div>
+
+        <div class="quick-metrics" id="homeMetrics"></div>
+
+        <div class="home-grid">
+          <div class="card">
+            <div class="section-title compact"><div><h3>Qué requiere tu atención</h3><span class="subtle">Prioridades y vencimientos</span></div><button class="btn secondary small" onclick="showView('trabajo')">Trabajo diario</button></div>
+            <div class="action-list" id="homePending"></div>
+          </div>
+          <div class="card">
+            <div class="section-title compact"><div><h3>Clases de hoy</h3><span class="subtle">Horario y asistencia</span></div><button class="btn secondary small" onclick="showView('asistencia')">Ver clases</button></div>
+            <div id="todayClasses"></div>
+            <div class="note-box" id="homeActionBox"></div>
+          </div>
+        </div>
+
+        <div class="coach-strip mini" style="margin-top:12px">
+          <div class="coach-mark">GC</div>
+          <div><strong>Gerardo Castro</strong><small>Especialista en Desarrollo Personal y Empresas Familiares</small></div>
+          <a class="coach-link" href="https://www.superaloya.com" target="_blank" rel="noopener">www.superaloya.com ↗</a>
+        </div>
+      </section>
+
+      <section class="view" id="view-config">
+        <div class="section-title"><h3>Configuración general del estudiante</h3><span class="pill">Solo Gerardo</span></div>
+        <div class="card"><form id="configForm" class="form-grid"></form><div class="actions"><button class="btn" onclick="saveConfig()">Guardar configuración</button></div></div>
+      </section>
+
+      <section class="view" id="view-matricula">
+        <div class="section-title"><h3>Preparación del ciclo</h3><span class="pill" id="prepBadge">0%</span></div>
+        <div class="card"><form id="enrollmentForm" class="form-grid"></form><div class="actions"><button class="btn" data-permission="editAcademic" onclick="saveEnrollment()">Guardar preparación</button></div></div>
+        <p class="table-note">Esta sección es temporal. Cuando la preparación se completa, deja de ser la protagonista y el seguimiento del ciclo pasa al frente.</p>
+      </section>
+
+      <section class="view" id="view-cursos">
+        <div class="section-title"><h3>Cursos y horarios</h3><div data-permission="editAcademic"><button class="btn secondary" onclick="openCourse()">Agregar curso</button> <button class="btn" onclick="openSession()">Agregar horario</button></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Curso</th><th>Situación</th><th>Modalidad</th><th>Estado</th><th>Horarios</th><th>Acciones</th></tr></thead><tbody id="coursesBody"></tbody></table></div>
+      </section>
+
+      <section class="view" id="view-agenda">
+        <div class="section-title"><div><h3>Agenda académica</h3><span class="subtle">Fuente maestra de tareas, exámenes, prácticas y entregas.</span></div><button class="btn" data-permission="editAgenda" onclick="openActivity()">+ Nueva actividad</button></div>
+        <div class="card" style="margin-bottom:12px"><div class="note-box"><strong>Regla:</strong> cada compromiso se registra una sola vez aquí. La semana toma de esta agenda lo que corresponde atender.</div></div>
+        <div class="table-wrap"><table><thead><tr><th>Actividad</th><th>Curso</th><th>Tipo</th><th>Asignada</th><th>Vence</th><th>Prioridad</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="activitiesBody"></tbody></table></div>
+      </section>
+
+      <section class="view" id="view-semana">
+        <div class="section-title"><div><h3>Organización de la semana</h3><span class="subtle">Agenda → borrador → envío → revisión de Gloria → semana aprobada.</span></div><span class="pill" id="weekStatusBadge">Sin preparar</span></div><div class="week-route" id="weekRoute"></div><div id="weekOmissions"></div>
+        <div class="card" id="weekSummaryCard"></div>
+        <div class="actions" style="margin-bottom:14px"><button class="btn" data-permission="editWork" onclick="prepareWeekUI()">Preparar / actualizar semana</button><button class="btn secondary" data-permission="editWork" onclick="openWeekPlanItem()">+ Bloque manual</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Actividad</th><th>Curso</th><th>Fecha objetivo</th><th>Hora</th><th>Resultado esperado</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="weekPlanBody"></tbody></table></div>
+        <div class="card" style="margin-top:14px" id="weekSubmitBox"></div>
+      </section>
+
+      <section class="view" id="view-supervision">
+        <div class="section-title"><div><h3>Supervisión semanal</h3><span class="subtle">Gloria revisa, aprueba/devuelve y cierra la semana.</span></div><span class="pill">Supervisión</span></div>
+        <div id="supervisionRoot"></div>
+      </section>
+
+      <section class="view" id="view-proyectos">
+        <div class="section-title"><h3>Proyectos académicos</h3><button class="btn" data-permission="editWork" onclick="openProject()">Nuevo proyecto</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Proyecto</th><th>Curso</th><th>Fecha límite</th><th>Estado</th><th>Progreso</th><th>Próximo paso</th><th>Acciones</th></tr></thead><tbody id="projectsBody"></tbody></table></div>
+      </section>
+
+      <section class="view" id="view-trabajo">
+        <div class="section-title work-toolbar">
+          <div><h3>Pendientes por urgencia</h3><span class="subtle">Primero vencidos y fechas más cercanas.</span></div>
+          <div class="toolbar-actions"><button class="btn secondary" data-permission="editWork" onclick="openDaily()">Registrar avance</button><button class="btn" data-permission="editWork" onclick="openProject()">+ Nuevo proyecto</button></div>
+        </div>
+
+        <div id="activeWorkCard" class="active-work"></div>
+
+        <div class="work-layout">
+          <div class="card work-pending-card">
+            <div class="section-title"><div><h3>Lista de trabajo</h3><span class="subtle">Selecciona una actividad para comenzar.</span></div><span class="pill" id="pendingCountBadge">0 pendientes</span></div>
+            <div id="workPendingList" class="work-pending-list"></div>
+          </div>
+
+          <div class="card week-card">
+            <div class="section-title"><div><h3>Agenda semanal</h3><span class="subtle">Clases, entregas y acciones programadas.</span></div><div class="week-nav"><button class="btn small secondary" onclick="moveWorkWeek(-7)">‹</button><button class="btn small secondary" onclick="goCurrentWeek()">Hoy</button><button class="btn small secondary" onclick="goNextPendingWeek()">Próximo</button><button class="btn small secondary" onclick="moveWorkWeek(7)">›</button></div></div>
+            <div id="workWeekLabel" class="week-label"></div>
+            <div id="workWeekCalendar" class="week-calendar"></div>
+          </div>
+        </div>
+
+        <div class="work-bottom">
+          <div class="card">
+            <div class="section-title"><h3>Avance de esta semana</h3></div>
+            <div id="workWeekMetrics" class="week-metrics"></div>
+          </div>
+          <div class="card">
+            <div class="section-title"><h3>Últimos avances registrados</h3><button class="btn small secondary" onclick="openDaily()">+ Registrar</button></div>
+            <div id="recentWorkReports" class="recent-reports"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-asistencia">
+        <div class="attendance-head">
+          <div><h3>Asistencia y clases</h3><p>Marca la asistencia de hoy y revisa lo que queda de la semana.</p></div>
+          <button class="btn" data-permission="editWork" onclick="openAttendance()">Registrar asistencia</button>
+        </div>
+
+        <div class="card attendance-today-card">
+          <div class="section-title"><div><h3>Clases de hoy</h3><span class="subtle" id="attendanceTodayDate"></span></div><span class="pill" id="todayClassCount">0 clases</span></div>
+          <div id="todayAttendanceList" class="attendance-today-list"></div>
+        </div>
+
+        <div class="attendance-metrics" id="attendanceMetrics"></div>
+
+        <div class="card attendance-progress-card">
+          <div class="attendance-progress-line"><div><strong>Asistencia acumulada</strong><span id="attendanceProgressText">0 de 0 clases</span></div><strong id="attendanceRateBadge">0%</strong></div>
+          <div class="attendance-bar"><span id="attendanceBar" style="width:0%"></span></div>
+        </div>
+
+        <div class="attendance-grid">
+          <div class="card">
+            <div class="section-title"><div><h3>Próximas clases</h3><span class="subtle">Lo que queda de esta semana</span></div></div>
+            <div id="upcomingClassesList" class="upcoming-classes"></div>
+          </div>
+          <div class="card">
+            <div class="section-title"><div><h3>Resumen por curso</h3><span class="subtle">Estado de asistencia esta semana</span></div></div>
+            <div id="attendanceCourseSummary" class="attendance-course-summary"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-tableros">
+        <div id="dashboardRoot"></div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div class="modal" id="activityModal"><div class="dialog"><div class="dialog-head"><h3 id="activityModalTitle">Actividad académica</h3><button class="close" onclick="closeModal('activityModal')">×</button></div><form id="activityForm" class="form-grid"><input type="hidden" name="ID"><div class="field"><label>Curso</label><select name="CURSO_ID" id="activityCourse"></select></div><div class="field"><label>Tipo</label><select name="TIPO"><option>Tarea</option><option>Examen</option><option>Práctica</option><option>Exposición</option><option>Entrega</option><option>Reunión</option><option>Otro</option></select></div><div class="field"><label>Prioridad</label><select name="PRIORIDAD"><option>Alta</option><option selected>Media</option><option>Baja</option></select></div><div class="field full"><label>Título</label><input name="TITULO" required></div><div class="field full"><label>Descripción</label><textarea name="DESCRIPCION"></textarea></div><div class="field"><label>Fecha asignada</label><input type="date" name="FECHA_ASIGNADA"></div><div class="field"><label>Fecha límite</label><input type="date" name="FECHA_LIMITE" required></div><div class="field"><label>Estado</label><select name="ESTADO"><option>Abierta</option><option>En proceso</option><option>Completada</option><option>Entregada</option><option>Calificada</option></select></div><div class="field full"><label>Evidencia requerida</label><input name="EVIDENCIA_REQUERIDA"></div><div class="field full"><label>Evidencia / enlace</label><input name="EVIDENCIA_URL"></div><div class="field"><label>Resultado / nota</label><input name="RESULTADO_NOTA"></div></form><div class="actions"><button class="btn" onclick="saveActivityForm()">Guardar actividad</button></div></div></div>
+
+<div class="modal" id="weekPlanModal"><div class="dialog"><div class="dialog-head"><h3>Plan semanal</h3><button class="close" onclick="closeModal('weekPlanModal')">×</button></div><form id="weekPlanForm" class="form-grid"><input type="hidden" name="ID"><input type="hidden" name="SEMANA_ID"><input type="hidden" name="ACTIVIDAD_ID"><div class="field"><label>Curso</label><select name="CURSO_ID" id="weekPlanCourse"></select></div><div class="field"><label>Tipo</label><input name="TIPO"></div><div class="field full"><label>Actividad</label><input name="TITULO" required></div><div class="field"><label>Fecha objetivo</label><input type="date" name="FECHA_OBJETIVO" required></div><div class="field"><label>Hora / bloque</label><input type="time" name="HORA_BLOQUE"></div><div class="field"><label>Estado</label><select name="ESTADO_EJECUCION"><option>Pendiente</option><option>En proceso</option><option>Cumplida</option><option>Entregada</option><option>Validada</option></select></div><div class="field full"><label>Resultado esperado</label><textarea name="RESULTADO_ESPERADO" required></textarea></div><div class="field full"><label>Evidencia esperada</label><input name="EVIDENCIA_ESPERADA"></div><div class="field full"><label>Evidencia realizada</label><input name="EVIDENCIA_URL"></div></form><div class="actions"><button class="btn" onclick="saveWeekPlanForm()">Guardar en semana</button></div></div></div>
+
+<div class="modal" id="courseModal"><div class="dialog"><div class="dialog-head"><h3 id="courseModalTitle">Curso</h3><button class="close" onclick="closeModal('courseModal')">×</button></div><form id="courseForm" class="form-grid"><input type="hidden" name="ID"><div class="field full"><label>Nombre del curso</label><input name="NOMBRE" required></div><div class="field"><label>Código</label><input name="CODIGO"></div><div class="field"><label>Situación</label><select name="SITUACION"><option>1.ª vez</option><option>2.ª vez</option><option>3.ª o más</option></select></div><div class="field"><label>Modalidad</label><select name="MODALIDAD"><option>Presencial</option><option>Remota</option><option>Virtual</option><option>Híbrida</option></select></div><div class="field"><label>Créditos</label><input type="number" min="0" name="CREDITOS"></div><div class="field"><label>Estado</label><select name="ESTADO"><option>Matriculado</option><option>Por confirmar</option><option>Retirado</option></select></div><div class="field full"><label>Observaciones</label><textarea name="OBSERVACIONES"></textarea></div></form><div class="actions"><button class="btn" onclick="saveGeneric('courseForm','saveCourse','courseModal')">Guardar curso</button></div></div></div>
+
+<div class="modal" id="sessionModal"><div class="dialog"><div class="dialog-head"><h3 id="sessionModalTitle">Horario</h3><button class="close" onclick="closeModal('sessionModal')">×</button></div><form id="sessionForm" class="form-grid"><input type="hidden" name="ID"><div class="field full"><label>Curso</label><select name="CURSO_ID" id="sessionCourse"></select></div><div class="field"><label>Día</label><select name="DIA"><option>Lunes</option><option>Martes</option><option>Miércoles</option><option>Jueves</option><option>Viernes</option><option>Sábado</option></select></div><div class="field"><label>Hora de inicio</label><input type="time" name="HORA_INICIO"></div><div class="field"><label>Hora de fin</label><input type="time" name="HORA_FIN"></div><div class="field"><label>Modalidad</label><select name="MODALIDAD"><option>Presencial</option><option>Remota</option><option>Virtual</option><option>Híbrida</option></select></div><div class="field full"><label>Aula o enlace</label><input name="AULA_ENLACE"></div></form><div class="actions"><button class="btn" onclick="saveGeneric('sessionForm','saveSession','sessionModal')">Guardar horario</button></div></div></div>
+
+<div class="modal" id="projectModal"><div class="dialog"><div class="dialog-head"><h3 id="projectModalTitle">Proyecto académico</h3><button class="close" onclick="closeModal('projectModal')">×</button></div><form id="projectForm" class="form-grid"><input type="hidden" name="ID"><input type="hidden" name="INTEGRANTES_JSON" id="membersJson"><div class="field"><label>Curso</label><select name="CURSO_ID" id="projectCourse"></select></div><div class="field"><label>Tipo</label><select name="TIPO"><option>Tarea</option><option>Informe</option><option>Examen</option><option>Exposición</option><option>Práctica</option><option>Proyecto final</option><option>Otro</option></select></div><div class="field"><label>Alcance</label><select name="ALCANCE" id="projectScope" onchange="toggleMembers()"><option>Individual</option><option>Grupal</option></select></div><div class="field full"><label>Nombre del proyecto</label><input name="TITULO"></div><div class="field full"><label>Descripción</label><textarea name="DESCRIPCION"></textarea></div><div class="field full conditional" id="membersSection"><label>Integrantes del proyecto</label><div class="member-list" id="membersList"></div><div><button type="button" class="btn secondary small" onclick="addMemberRow()">+ Añadir integrante</button></div></div><div class="field"><label>Fecha límite</label><input type="date" name="FECHA_LIMITE"></div><div class="field"><label>Estado</label><select name="ESTADO" id="projectStatus" onchange="toggleProjectConditionalFields()"><option>No iniciado</option><option>Iniciado</option><option>En proceso</option><option>Entregado</option><option>Calificado</option><option>Cerrado</option></select></div><div class="field full"><label>Próximo paso</label><input name="PROXIMO_PASO" placeholder="¿Qué acción concreta debes realizar después?"></div><div class="field conditional" id="deliveryDateField"><label>Fecha de entrega real</label><input type="date" name="FECHA_ENTREGA"></div><div class="field full conditional" id="evidenceField"><label>Evidencia o enlace</label><input name="EVIDENCIA_URL"></div><div class="field conditional" id="gradeField"><label>Nota obtenida</label><input type="number" step="0.01" min="0" name="NOTA"></div><div class="field conditional" id="maxGradeField"><label>Nota máxima</label><input type="number" step="0.01" min="0" name="NOTA_MAXIMA" value="20"></div><div class="field full conditional" id="teacherObservationField"><label>Observación del docente</label><textarea name="OBSERVACION_DOCENTE"></textarea></div></form><div class="actions"><button class="btn" onclick="saveProjectForm()">Guardar proyecto</button></div></div></div>
+
+<div class="modal" id="actionModal"><div class="dialog"><div class="dialog-head"><h3>Nueva acción del proyecto</h3><button class="close" onclick="closeModal('actionModal')">×</button></div><form id="actionForm" class="form-grid"><input type="hidden" name="ID"><input type="hidden" name="PROYECTO_ID"><div class="field"><label>Etapa</label><select name="ETAPA"><option>Definición</option><option>Planificación</option><option>Ejecución</option><option>Revisión</option><option>Entrega</option></select></div><div class="field full"><label>Acción</label><input name="TITULO"></div><div class="field"><label>Fecha límite</label><input type="date" name="FECHA_LIMITE"></div><div class="field"><label>Estado</label><select name="ESTADO"><option>Pendiente</option><option>En proceso</option><option>Completada</option></select></div><div class="field"><label>Avance %</label><input type="number" name="AVANCE" min="0" max="100"></div><div class="field full"><label>Evidencia</label><input name="EVIDENCIA_URL"></div></form><div class="actions"><button class="btn" onclick="saveGeneric('actionForm','saveAction','actionModal')">Guardar acción</button></div></div></div>
+
+<div class="modal" id="dailyModal"><div class="dialog"><div class="dialog-head"><h3>Registrar actividad diaria</h3><button class="close" onclick="closeModal('dailyModal')">×</button></div><form id="dailyForm" class="form-grid"><input type="hidden" name="ID"><div class="field"><label>Fecha</label><input type="date" name="FECHA"></div><div class="field"><label>Proyecto</label><select name="PROYECTO_ID" id="dailyProject" onchange="fillActionSelect()"></select></div><div class="field"><label>Acción</label><select name="ACCION_ID" id="dailyAction"></select></div><div class="field"><label>Horas trabajadas</label><input type="number" step="0.25" min="0" name="HORAS"></div><div class="field"><label>Avance antes %</label><input type="number" min="0" max="100" name="AVANCE_ANTES"></div><div class="field"><label>Avance después %</label><input type="number" min="0" max="100" name="AVANCE_DESPUES"></div><div class="field full"><label>Actividad realizada</label><textarea name="ACTIVIDAD_REALIZADA"></textarea></div><div class="field full"><label>Próximo paso</label><input name="PROXIMO_PASO"></div><div class="field full"><label>Observación</label><textarea name="OBSERVACION"></textarea></div><div class="field full"><label>Evidencia</label><input name="EVIDENCIA_URL"></div></form><div class="actions"><button class="btn" onclick="saveGeneric('dailyForm','saveDailyReport','dailyModal')">Guardar reporte</button></div></div></div>
+
+<div class="modal" id="attendanceModal"><div class="dialog"><div class="dialog-head"><h3>Marcar asistencia</h3><button class="close" onclick="closeModal('attendanceModal')">×</button></div><form id="attendanceForm" class="form-grid"><input type="hidden" name="ID"><input type="hidden" name="SESION_ID"><div class="field"><label>Fecha</label><input type="date" name="FECHA"></div><div class="field"><label>Curso</label><select name="CURSO_ID" id="attendanceCourse"></select></div><div class="field"><label>Estado</label><select name="ESTADO"><option>Asistió</option><option>Tardanza</option><option>No asistió</option><option>Justificada</option></select></div><div class="field full"><label>Tema de clase</label><input name="TEMA_CLASE" placeholder="Tema trabajado en clase"></div><div class="field full"><label>Compromiso o tarea</label><textarea name="COMPROMISOS" placeholder="Tarea, práctica o compromiso pendiente"></textarea></div><div class="field full"><label>Justificación (si aplica)</label><textarea name="JUSTIFICACION"></textarea></div></form><div class="actions"><button class="btn" onclick="saveGeneric('attendanceForm','saveAttendance','attendanceModal')">Guardar asistencia</button></div></div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let state=null, accessToken=localStorage.getItem('gabriel_access_token') || '';
+const qs=s=>document.querySelector(s), qsa=s=>[...document.querySelectorAll(s)];
+document.addEventListener('DOMContentLoaded',()=>{qsa('[data-view]').forEach(b=>b.onclick=()=>showView(b.dataset.view)); qs('#demoRole').onchange=e=>server('setDemoRole',[e.target.value]); accessToken?load():showLogin();});
+function server(fn,args=[]){setBusy(true);return new Promise((resolve,reject)=>google.script.run.withSuccessHandler(r=>{setBusy(false);if(r&&r.dashboard){state=r;showApp();render();}resolve(r)}).withFailureHandler(e=>{setBusy(false);const msg=e.message||String(e);if(msg.includes('SESSION_EXPIRED')){accessToken='';localStorage.removeItem('gabriel_access_token');showLogin()}else toast(msg,true);reject(e)}).callApi(accessToken,fn,args));}
+function load(){server('getBootstrap').catch(()=>{});}
+function loginFamily(){const role=qs('#loginProfile').value,pin=qs('#loginPin').value;qs('#loginError').textContent='';google.script.run.withSuccessHandler(r=>{accessToken=r.token;localStorage.setItem('gabriel_access_token',accessToken);qs('#loginPin').value='';load();}).withFailureHandler(e=>qs('#loginError').textContent=e.message||String(e)).loginFamily(role,pin);}
+function logoutFamily(){const old=accessToken;accessToken='';localStorage.removeItem('gabriel_access_token');google.script.run.logoutFamily(old);showLogin();}
+function showLogin(){qs('#loginScreen').style.display='flex';qs('#appShell').style.display='none';}
+function showApp(){qs('#loginScreen').style.display='none';qs('#appShell').style.display='grid';}
+function setBusy(v){qsa('.btn').forEach(b=>b.disabled=v);document.body.style.cursor=v?'progress':'default';}
+function showView(name){qsa('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));qsa('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===name));const titles={inicio:'Inicio',config:'Configuración general',matricula:'Preparación del ciclo',cursos:'Cursos y horarios',agenda:'Agenda académica',semana:'Organización semanal',proyectos:'Proyectos académicos',trabajo:'Trabajo diario',asistencia:'Asistencia a clases',supervision:'Supervisión semanal',tableros:'Tableros de control'};qs('#pageTitle').textContent=titles[name]||name;}
+function render(){
+  const familyOnly=state.permissions.familyView&&!state.permissions.admin&&!state.permissions.editWork;
+  qs('#userName').textContent=state.user.ROL==='GABRIEL'?(state.dashboard.studentName||state.user.NOMBRE):state.user.NOMBRE;
+  qs('#userRole').textContent=familyOnly?'FAMILIA · solo consulta':state.user.ROL+(state.user.MODO_DEMO?' · vista de prueba':'');
+  qs('#adminTools').style.display=state.permissions.admin?'block':'none';
+  qs('#groupConfig').style.display=state.permissions.admin?'block':'none';
+  qs('#navConfig').style.display=state.permissions.admin?'block':'none';
+  qsa('[data-permission]').forEach(el=>el.style.display=state.permissions[el.dataset.permission]?'':'none');
+  applyStageVisuals();renderConfig();renderMatricula();renderCourses();renderAgenda();renderSemana();renderProjects();renderTrabajo();renderAsistencia();renderSupervision();renderInicio();renderRoleGuide();renderTableros();fillSelects();
+  if(familyOnly){
+    const isGloria=state.user.ROL==='GLORIA';
+    qsa('#navArea [data-view]').forEach(b=>b.style.display=(b.dataset.view==='tableros'||(isGloria&&b.dataset.view==='supervision'))?'':'none');
+    qsa('#navArea .nav-group').forEach(g=>g.style.display='none');
+    const tb=qs('#navArea [data-view="tableros"]'); if(tb)tb.textContent='Resumen de Gabriel';
+    showView(isGloria&&state.currentWeek&&state.currentWeek.canReview?'supervision':'tableros');
+    qs('#pageTitle').textContent=isGloria&&state.currentWeek&&state.currentWeek.canReview?'Supervisión semanal':'Resumen de Gabriel';
+  } else {
+    qsa('#navArea [data-view]').forEach(b=>{if(b.id!=='navConfig')b.style.display=''});
+  }
+}
+function applyStageVisuals(){const done=state.dashboard.preparationComplete;qs('#groupPrep').classList.toggle('secondary',done);qs('#navMatricula').classList.toggle('muted',done);qs('#navCursos').classList.toggle('muted',done);}
+
+function levelFor(v,g,y){if(v==null)return'GRIS';return v>=g?'VERDE':v>=y?'AMARILLO':'ROJO'}
+function renderRoleGuide(){
+  const r=state.user.ROL,cw=state.currentWeek||{},w=cw.week;
+  let title='Tu centro académico',text='Revisa el estado y sigue el siguiente paso recomendado.',badge='Seguimiento';
+  if(r==='GABRIEL'){title='Gabriel · tu siguiente paso';text=!w?'Prepara la semana desde tu agenda.':w.ESTADO==='BORRADOR'||w.ESTADO==='DEVUELTA'?'Completa y envía tu planificación a Gloria.':w.ESTADO==='ENVIADA'?'Tu semana está esperando revisión de Gloria.':w.ESTADO==='APROBADA'?'Ejecuta el plan y registra evidencias y asistencia.':'Semana cerrada: revisa resultados y prepara la siguiente.';badge=w?w.ESTADO:'SIN PREPARAR';}
+  if(r==='GLORIA'){title='Gloria · supervisión';text=w&&w.ESTADO==='ENVIADA'?'La planificación está lista para tu revisión.':w&&w.ESTADO==='APROBADA'?'Supervisa evidencias y cierra cuando todo esté verificado.':'Consulta el resumen y espera el siguiente hito de revisión.';badge='SUPERVISORA';}
+  if(r==='ALEJANDRA'){title='Alejandra · seguimiento familiar';text='Consulta avances, asistencia, atrasos y riesgos sin modificar información.';badge='SOLO LECTURA';}
+  if(r==='ADMIN'){title='Gerardo · administración y dirección';text='Tienes acceso completo, trazabilidad y posibilidad de intervención excepcional.';badge='ADMIN';}
+  qs('#roleGuideTitle').textContent=title;qs('#roleGuideText').textContent=text;qs('#roleGuideBadge').textContent=badge;
+}
+function renderMasterIndicatorsHome(){
+  const m=state.masterIndicators||{},o=m.organization||{},e=m.execution||{};
+  const items=[['Cobertura semanal',o.coverage==null?'—':o.coverage+'%',levelFor(o.coverage,100,80)],['Cumplimiento',e.compliance==null?'—':e.compliance+'%',levelFor(e.compliance,90,70)],['Asistencia',e.attendanceRate==null?'—':e.attendanceRate+'%',levelFor(e.attendanceRate,90,80)],['Evidencias',e.evidenceRate==null?'—':e.evidenceRate+'%',levelFor(e.evidenceRate,100,80)]];
+  qs('#masterIndicatorsHome').innerHTML=items.map(x=>`<div class="master-kpi"><small>${esc(x[0])}</small><strong>${esc(x[1])}</strong><div class="kpi-status ${x[2]}">${x[2]==='VERDE'?'En nivel':x[2]==='AMARILLO'?'Revisar':x[2]==='ROJO'?'Atención':'Sin datos'}</div></div>`).join('');
+}
+function renderContextMessage(){const m=state.currentMessage,box=qs('#contextMessage');if(!box)return;if(!m){box.innerHTML='';return;}box.innerHTML=`<div class="context-message"><span class="eyebrow">${esc(m.TIPO||'SEGUIMIENTO')}</span><h3>${esc(m.TITULO)}</h3><p>${esc(m.MENSAJE)}</p></div>`;}
+function renderWeekRoute(){const el=qs('#weekRoute');if(!el)return;const w=(state.currentWeek||{}).week;const st=w?w.ESTADO:'SIN_PREPARAR';const order=['BORRADOR','ENVIADA','APROBADA','EJECUCION','CERRADA'];let idx=st==='DEVUELTA'?0:st==='ENVIADA'?1:st==='APROBADA'?2:st==='CERRADA'?4:0;if(st==='APROBADA'&&(state.currentWeek||{}).completedCount>0)idx=3;const steps=[['1. Organizar','Agenda y plan'],['2. Enviar','A revisión'],['3. Aprobar','Gloria valida'],['4. Ejecutar','Evidencia y asistencia'],['5. Cerrar','Semana verificada']];el.innerHTML=steps.map((s,i)=>`<div class="route-step ${i<idx?'done':i===idx?'current':''}"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('');const om=(state.currentWeek||{}).omissions||[];const ob=qs('#weekOmissions');if(ob)ob.innerHTML=om.length?`<div class="omission-box"><strong>⚠ ${om.length} actividad(es) potencialmente omitida(s)</strong><div class="help-line">Estaban asignadas antes del envío y no aparecen en el plan semanal. Gloria podrá revisarlas.</div>${om.slice(0,4).map(a=>`<div class="help-line">• ${esc(a.TITULO)} · ${fmt(a.FECHA_LIMITE)}</div>`).join('')}</div>`:'';}
+function renderInicio(){
+  const d=state.dashboard;
+  const first=state.pendingItems&&state.pendingItems.length?state.pendingItems[0]:null;
+  const student=d.studentName||state.config.ESTUDIANTE||'Estudiante';
+  const missingSchedules=d.missingScheduleCourses||[];
+  const alerts=[];
+  renderMasterIndicatorsHome();renderContextMessage();
+
+  if(missingSchedules.length){
+    alerts.push({
+      type:'critical', icon:'⚠️',
+      title:missingSchedules.length===state.courses.length?'Faltan los horarios de todos los cursos':missingSchedules.length+' curso(s) todavía no tienen horario',
+      detail:missingSchedules.slice(0,3).map(x=>x.NOMBRE).join(' · ')+(missingSchedules.length>3?' · +'+(missingSchedules.length-3)+' más':''),
+      button:'Completar horarios', action:"showView('cursos')"
+    });
+  }
+  if(d.overduePendingCount){
+    alerts.push({type:'critical',icon:'🔴',title:d.overduePendingCount+' pendiente(s) vencido(s)',detail:'Revisa primero lo que ya superó su fecha límite.',button:'Ver pendientes',action:"showView('trabajo')"});
+  }
+  if(d.todayAttendancePendingCount){
+    alerts.push({type:'warning',icon:'●',title:d.todayAttendancePendingCount+' clase(s) de hoy pendientes de marcar',detail:'Registra la asistencia para mantener el seguimiento al día.',button:'Marcar asistencia',action:"showView('asistencia')"});
+  }
+  if(!d.preparationComplete && !missingSchedules.length){
+    alerts.push({type:'warning',icon:'⚠️',title:'Preparación del ciclo incompleta',detail:'Revisa los datos que faltan antes de iniciar el seguimiento completo.',button:'Revisar preparación',action:"showView('matricula')"});
+  }
+  qs('#homeAlerts').innerHTML=alerts.map(a=>`<div class="system-alert ${a.type==='critical'?'critical':''}"><span class="alert-icon">${a.icon}</span><div><strong>${esc(a.title)}</strong><small>${esc(a.detail)}</small></div><button class="btn secondary small" onclick="${a.action}">${esc(a.button)}</button></div>`).join('');
+
+  qs('#heroTitle').textContent='Hola, '+student+'.';
+  qs('#coachMessage').textContent=coachPhrase(d,first,missingSchedules.length);
+  qs('#heroText').textContent=first
+    ? ((first.PROJECT&&first.PROJECT!==first.TITLE?first.PROJECT+' · ':'')+(first.DATE?'Vence '+fmt(first.DATE)+' · ':'')+'Avance '+(first.PROGRESS||first.PROGRESO||0)+'%')
+    : (missingSchedules.length?'Antes de planificar la semana, completa los horarios de tus cursos.':'No tienes pendientes activos. Registra una nueva tarea, examen o trabajo cuando aparezca.');
+  qs('#homeLightDot').className='traffic-light '+d.semaforo;
+  qs('#homeStatusText').textContent=statusLabel(d.semaforo);
+  qs('#homeStatusDetail').textContent=d.totalPendingCount+' pendiente(s) activo(s)';
+  qs('#homeMetrics').innerHTML=quickMetricCards([
+    ['Hoy',d.todayPendingCount,'pendientes'],
+    ['7 días',d.weekPendingCount,'por atender'],
+    ['Proyectos',d.activeProjectsCount,'activos'],
+    ['Clases hoy',d.todayClasses.length,'programadas']
+  ]);
+
+  qs('#primaryActionBtn').textContent=first?'Trabajar ahora':(missingSchedules.length?'Completar horarios':'+ Nuevo proyecto');
+  qs('#homePending').innerHTML=state.pendingItems.length
+    ? state.pendingItems.slice(0,8).map(homeActionItem).join('')
+    : `<div class="empty compact-empty"><strong>${missingSchedules.length?'Primero completa los horarios':'Sin pendientes activos'}</strong><div class="home-zero-note">${missingSchedules.length?'El calendario y las clases de hoy se activarán al registrar los horarios.':'Cuando registres una tarea, examen o trabajo aparecerá aquí automáticamente.'}</div></div>`;
+
+  qs('#todayClasses').innerHTML=d.todayClasses.length
+    ? d.todayClasses.map(c=>`<div class="today-class"><time>${esc(c.HORA_INICIO)}</time><div><strong>${esc(courseName(c.CURSO_ID))}</strong><small>${esc(c.MODALIDAD||'')} · ${esc(c.ESTADO)}</small></div><button class="btn secondary small" onclick="showView('asistencia')">${c.ESTADO==='Pendiente de marcar'?'Marcar':'Ver'}</button></div>`).join('')
+    : (missingSchedules.length
+      ? `<div class="empty compact-empty"><strong>No hay clases conocidas para hoy</strong><div class="home-zero-note">Aún faltan ${missingSchedules.length} curso(s) por completar con horario. Las clases ya registradas sí se mostrarán normalmente.</div><div class="actions"><button class="btn small" onclick="showView('cursos')">Completar horarios</button></div></div>`
+      : '<div class="empty compact-empty">Hoy no tienes clases programadas.</div>');
+  qs('#homeActionBox').innerHTML=d.reportedToday
+    ? '<strong>Avance de hoy registrado</strong><br><span class="subtle">Puedes continuar con la siguiente prioridad.</span>'
+    : (first?'<strong>Al terminar, registra el avance</strong><br><span class="subtle">Actualiza qué hiciste, el porcentaje y el próximo paso.</span><div class="actions"><button class="btn small" onclick="openDaily()">Registrar avance</button></div>':'<strong>Inicio limpio</strong><br><span class="subtle">No hay trabajo diario que registrar todavía.</span>');
+}
+function coachPhrase(d,first,missingScheduleCount){
+  if(missingScheduleCount) return 'Primero ordena la base: con tus horarios completos podrás ver con claridad qué toca cada día.';
+  if(d.overduePendingCount) return 'Retoma lo vencido primero. Cerrar una deuda académica libera espacio para avanzar.';
+  if(first&&first.DATE===today()) return 'Hoy importa cerrar lo que vence hoy. Concéntrate en una acción concreta.';
+  if(first&&d.weekPendingCount) return 'No necesitas hacerlo todo hoy. Avanza primero en lo que vence antes.';
+  if(d.activeProjectsCount) return 'Buen ritmo: mantén el avance y deja siempre definido el próximo paso.';
+  return 'Mantén el sistema listo: registra cada nueva tarea apenas aparezca.';
+}
+function goPrimaryAction(){
+  const first=state&&state.pendingItems&&state.pendingItems.length?state.pendingItems[0]:null;
+  const missing=(state&&state.dashboard&&state.dashboard.missingScheduleCourses)||[];
+  if(!first&&missing.length){showView('cursos');return;}
+  if(!first){openProject();return;}
+  showView('trabajo');
+  setTimeout(()=>{const el=qs('#workPendingList');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},80);
+}
+function goFocusedProject(){
+  const first=state&&state.pendingItems&&state.pendingItems.length?state.pendingItems[0]:null;
+  if(!first){openProject();return;}
+  goProject(first.PROJECT_ID||first.ID||'');
+}
+function statusLabel(light){return ({ROJO:'Atención inmediata',AMARILLO:'Próximo a vencer',VERDE:'Avance al día',AZUL:'Entregado / en espera',GRIS:'Por organizar'})[light]||'Estado actual';}
+function quickMetricCards(items){return items.map(x=>`<div class="quick-metric"><small>${esc(x[0])}</small><strong>${esc(x[1])}</strong><span class="subtle">${esc(x[2])}</span></div>`).join('');}
+function homeActionItem(p){const light=p.SEMAFORO||'GRIS';const target=p.TYPE==='ACCION'?'trabajo':(p.TYPE==='PROYECTO'?'proyectos':'trabajo');return `<div class="action-item"><span class="traffic-light ${light}"></span><div><strong>${esc(p.TITLE)}</strong><small>${p.PROJECT&&p.PROJECT!==p.TITLE?esc(p.PROJECT)+' · ':''}${p.DATE?'Vence '+fmt(p.DATE)+' · ':''}${esc(statusText(p.STATUS))}</small></div><button class="btn secondary" onclick="showView('${target}')">Ir ahora</button></div>`;}
+function renderConfig(){qs('#configForm').innerHTML=`${field('ESTUDIANTE','Nombre del estudiante',state.config.ESTUDIANTE||'','text')} ${field('CARRERA','Carrera',state.config.CARRERA||'','text')} ${field('CAMPUS','Campus',state.config.CAMPUS||'','text')} ${field('PERIODO','Periodo',state.config.PERIODO||'','text')} ${field('WEBSITE','Sitio web',state.config.WEBSITE||'','text')}`;}
+function saveConfig(){server('saveConfig',[formData('configForm')]).then(()=>toast('Configuración guardada.'));}
+function renderMatricula(){const e=state.enrollment,d=state.dashboard;qs('#prepBadge').textContent=d.preparationProgress + '%';qs('#prepBadge').className='pill ' + (d.preparationComplete?'VERDE':'AMARILLO');qs('#enrollmentForm').innerHTML=`<input type="hidden" name="ID" value="${esc(e.ID)}"><div class="field full"><label>Estudiante</label><input value="${esc(state.config.ESTUDIANTE||e.ESTUDIANTE||'')}" disabled></div>${field('CICLO','Ciclo',e.CICLO)}${field('APERTURA_MATRICULA','Apertura de matrícula',e.APERTURA_MATRICULA,'date')}${field('LIMITE_MATRICULA','Límite de matrícula',e.LIMITE_MATRICULA,'date')}${field('FECHA_MATRICULA','Fecha de matrícula',e.FECHA_MATRICULA,'date')}${field('INICIO_CLASES','Inicio de clases',e.INICIO_CLASES,'date')}${field('TERMINO_MATRICULA','Término de matrícula',e.TERMINO_MATRICULA,'date')}<div class="field"><label>Pago de matrícula</label><select name="ESTADO_PAGO"><option ${sel(e.ESTADO_PAGO,'Pendiente')}>Pendiente</option><option ${sel(e.ESTADO_PAGO,'Pagado')}>Pagado</option><option ${sel(e.ESTADO_PAGO,'Validado')}>Validado</option></select></div><div class="field full"><label>Evidencia de matrícula o pago</label><input name="EVIDENCIA_URL" value="${esc(e.EVIDENCIA_URL)}"></div>`;}
+function saveEnrollment(){server('saveEnrollment',[formData('enrollmentForm')]).then(()=>toast('Preparación guardada.'));}
+function renderCourses(){qs('#coursesBody').innerHTML=state.courses.length?state.courses.map(c=>{const ss=state.sessions.filter(s=>s.CURSO_ID===c.ID);const horarios=ss.length?ss.map(s=>`<div class="schedule-line"><span><strong>${esc(s.DIA)}</strong> ${esc(s.HORA_INICIO)}–${esc(s.HORA_FIN)}${s.AULA_ENLACE?` · ${esc(s.AULA_ENLACE)}`:''}</span><button class="btn tiny secondary" onclick="editSession('${s.ID}')">Editar</button></div>`).join(''):'<span class="subtle">Sin horario programado</span>';return `<tr><td data-label="Curso"><strong>${esc(c.NOMBRE)}</strong><br><span class="subtle">${esc(c.CODIGO)}</span></td><td data-label="Situación">${esc(c.SITUACION)}</td><td data-label="Modalidad">${esc(c.MODALIDAD)}</td><td data-label="Estado">${esc(c.ESTADO)}</td><td data-label="Horarios">${horarios}</td><td data-label="Acciones"><div class="course-actions"><button class="btn small primary-soft" onclick="openSession('${c.ID}')">+ Horario</button><button class="btn small secondary" onclick="editCourse('${c.ID}')">Editar</button><button class="btn small" onclick="openProject('${c.ID}')">+ Proyecto</button><button class="btn small danger" onclick="removeItem('deactivateCourse','${c.ID}','curso')">Retirar</button></div></td></tr>`;}).join(''):'<tr><td colspan="6" class="empty">No hay cursos registrados.</td></tr>';}
+
+function renderAgenda(){
+  const rows=(state.activities||[]).slice().sort((a,b)=>String(a.FECHA_LIMITE||'9999').localeCompare(String(b.FECHA_LIMITE||'9999')));
+  qs('#activitiesBody').innerHTML=rows.length?rows.map(a=>`<tr><td><strong>${esc(a.TITULO)}</strong><br><span class="subtle">${esc(a.DESCRIPCION||'')}</span></td><td>${esc(courseName(a.CURSO_ID))}</td><td>${esc(a.TIPO||'')}</td><td>${fmt(a.FECHA_ASIGNADA)}</td><td>${fmt(a.FECHA_LIMITE)}</td><td><span class="pill">${esc(a.PRIORIDAD||'Media')}</span></td><td>${esc(a.ESTADO||'Abierta')}</td><td><button class="btn small secondary" onclick="editActivity('${a.ID}')">Editar</button> <button class="btn small danger" onclick="removeItem('deactivateActivity','${a.ID}','actividad')">Retirar</button></td></tr>`).join(''):'<tr><td colspan="8" class="empty">Todavía no hay actividades en la agenda maestra.</td></tr>';
+}
+function openActivity(){resetForm('activityForm');fillSelects();qs('#activityForm').elements.FECHA_ASIGNADA.value=today();qs('#activityModalTitle').textContent='Nueva actividad académica';openModal('activityModal');}
+function editActivity(id){resetForm('activityForm');fillSelects();const a=(state.activities||[]).find(x=>x.ID===id);fillForm('activityForm',a);qs('#activityModalTitle').textContent='Editar actividad';openModal('activityModal');}
+function saveActivityForm(){server('saveActivity',[formData('activityForm')]).then(()=>{closeModal('activityModal');toast('Actividad guardada en la agenda.');});}
+
+function renderSemana(){
+  renderWeekRoute();
+  const cw=state.currentWeek||{},w=cw.week;
+  qs('#weekStatusBadge').textContent=w?(w.ESTADO||'BORRADOR'):'SIN PREPARAR';
+  qs('#weekStatusBadge').className='pill '+(w&&w.ESTADO==='CERRADA'?'VERDE':w&&w.ESTADO==='APROBADA'?'AZUL':w&&w.ESTADO==='ENVIADA'?'AMARILLO':'GRIS');
+  qs('#weekSummaryCard').innerHTML=w?`<div class="status-card"><div><span class="minor-title">SEMANA ${fmt(w.FECHA_INICIO)} — ${fmt(w.FECHA_FIN)}</span><h3 style="margin:6px 0">${esc(w.ESTADO||'BORRADOR')}</h3><span class="subtle">${cw.planCount||0} compromiso(s) · ${cw.completedCount||0} cumplido(s) · ${cw.completionRate||0}%</span></div><div>${cw.locked?'<span class="pill AZUL">🔒 Bloqueada</span>':'<span class="pill">Editable</span>'}</div></div>${w.OBSERVACION?`<div class="note-box"><strong>Observación:</strong> ${esc(w.OBSERVACION)}</div>`:''}`:`<div class="empty"><strong>La semana aún no está preparada.</strong><br>El sistema tomará automáticamente los compromisos abiertos de la agenda.</div>`;
+  qs('#weekPlanBody').innerHTML=cw.plan&&cw.plan.length?cw.plan.map(p=>`<tr><td><strong>${esc(p.TITULO)}</strong><br><span class="subtle">${esc(p.TIPO||'')}</span></td><td>${esc(courseName(p.CURSO_ID))}</td><td>${fmt(p.FECHA_OBJETIVO)}</td><td>${esc(p.HORA_BLOQUE||'—')}</td><td>${esc(p.RESULTADO_ESPERADO||'Pendiente de definir')}</td><td>${esc(p.ESTADO_EJECUCION||'Pendiente')}</td><td>${cw.locked?'🔒':`<button class="btn small secondary" onclick="editWeekPlanItem('${p.ID}')">Editar</button>`}</td></tr>`).join(''):'<tr><td colspan="7" class="empty">No hay compromisos en la semana.</td></tr>';
+  if(!w){qs('#weekSubmitBox').innerHTML='<strong>Primero prepara la semana.</strong><div class="subtle">Se recopilarán actividades abiertas y vencimientos.</div>';return;}
+  const disabled=cw.locked||w.ESTADO==='ENVIADA';
+  qs('#weekSubmitBox').innerHTML=`<div class="section-title"><div><h3>Control antes de enviar</h3><span class="subtle">Evita declarar una semana vacía sin revisar las fuentes.</span></div></div><form id="weekSubmitForm" class="form-grid"><input type="hidden" name="ID" value="${esc(w.ID)}"><div class="field"><label><input type="checkbox" name="CHECK_BLACKBOARD" value="true" ${truthyClient(w.CHECK_BLACKBOARD)?'checked':''}> Revisé Blackboard</label></div><div class="field"><label><input type="checkbox" name="CHECK_CURSOS" value="true" ${truthyClient(w.CHECK_CURSOS)?'checked':''}> Revisé cursos</label></div><div class="field"><label><input type="checkbox" name="CHECK_CALENDARIO" value="true" ${truthyClient(w.CHECK_CALENDARIO)?'checked':''}> Revisé calendario</label></div><div class="field full"><label><input type="checkbox" name="DECLARA_SIN_ACTIVIDADES" value="true" ${truthyClient(w.DECLARA_SIN_ACTIVIDADES)?'checked':''}> Declaro que no existen actividades adicionales</label></div><div class="field full"><label>Observación</label><textarea name="OBSERVACION">${esc(w.OBSERVACION||'')}</textarea></div></form><div class="actions"><button class="btn" ${disabled?'disabled':''} onclick="submitCurrentWeek()">Enviar a Gloria para revisión</button></div>`;
+}
+function truthyClient(v){return v===true||['true','sí','si','1'].includes(String(v||'').toLowerCase())}
+function prepareWeekUI(){server('prepareCurrentWeek').then(()=>toast('Semana preparada con la agenda actual.'));}
+function openWeekPlanItem(){const cw=state.currentWeek||{};if(!cw.week){toast('Primero prepara la semana.',true);return;}if(cw.locked){toast('La semana está bloqueada.',true);return;}resetForm('weekPlanForm');fillSelects();qs('#weekPlanForm').elements.SEMANA_ID.value=cw.week.ID;openModal('weekPlanModal');}
+function editWeekPlanItem(id){const p=(state.weekPlan||[]).find(x=>x.ID===id);if(!p)return;resetForm('weekPlanForm');fillSelects();fillForm('weekPlanForm',p);openModal('weekPlanModal');}
+function saveWeekPlanForm(){server('saveWeekPlanItem',[formData('weekPlanForm')]).then(()=>{closeModal('weekPlanModal');toast('Plan semanal actualizado.');});}
+function submitCurrentWeek(){server('submitWeek',[formData('weekSubmitForm')]).then(()=>toast('Semana enviada a Gloria.'));}
+
+
+function reviewPlanItemUI(id,decision){let obs='';if(decision==='OBSERVADA'){obs=prompt('¿Qué debe corregir Gabriel en esta actividad?')||'';if(!obs.trim())return;}server('reviewPlanItem',[{ID:id,DECISION:decision,OBSERVACION:obs}]).then(()=>toast(decision==='VALIDADA'?'Evidencia validada.':'Actividad observada.'));}
+function renderSupervision(){
+  const root=qs('#supervisionRoot'),cw=state.currentWeek||{},w=cw.week;
+  if(!w){root.innerHTML='<div class="card"><div class="empty">Gabriel todavía no ha preparado la semana actual.</div></div>';return;}
+  const plan=cw.plan||[];
+  const rows=plan.length?plan.map(p=>`<div class="family-deadline"><div><strong>${fmt(p.FECHA_OBJETIVO)}</strong><span>${esc(p.HORA_BLOQUE||'Sin hora')}</span></div><div><strong>${esc(p.TITULO)}</strong><span>${esc(courseName(p.CURSO_ID))} · ${esc(p.RESULTADO_ESPERADO||'Sin resultado definido')}</span></div><div style="text-align:right"><strong>${esc(p.ESTADO_EJECUCION||'Pendiente')}</strong></div></div>`).join(''):'<div class="family-empty">No hay actividades planificadas.</div>';
+  let controls='';
+  if(w.ESTADO==='ENVIADA') controls=`<div class="field full"><label>Observación de Gloria</label><textarea id="reviewObservation"></textarea></div><div class="actions"><button class="btn" onclick="reviewCurrentWeek('APROBADA')">Aprobar semana</button><button class="btn danger" onclick="reviewCurrentWeek('DEVUELTA')">Devolver a Gabriel</button></div>`;
+  else if(w.ESTADO==='APROBADA') controls=`<div class="field full"><label>Observación de cierre</label><textarea id="reviewObservation"></textarea></div><div class="actions"><button class="btn" onclick="closeCurrentWeek()">Cerrar semana</button><button class="btn secondary" onclick="reopenCurrentWeek()">Reabrir para corrección</button></div>`;
+  else if(w.ESTADO==='CERRADA') controls='<div class="note-box"><strong>Semana cerrada y verificada.</strong></div><div class="actions"><button class="btn secondary" onclick="reopenCurrentWeek()">Reabrir excepcionalmente</button></div>';
+  else controls=`<div class="note-box">Estado actual: <strong>${esc(w.ESTADO)}</strong>. La revisión se habilita cuando Gabriel envíe la semana.</div>`;
+  root.innerHTML=`<div class="family-wrap"><div class="master-kpis"><div class="master-kpi"><small>Organización</small><strong>${org.coverage==null?'—':org.coverage+'%'}</strong></div><div class="master-kpi"><small>Omisiones</small><strong>${org.omissions||0}</strong></div><div class="master-kpi"><small>Cumplimiento</small><strong>${exe.compliance==null?'—':exe.compliance+'%'}</strong></div><div class="master-kpi"><small>Riesgo alto</small><strong>${mi.redCourses||0}</strong></div></div><div class="family-status"><div><h2>Semana de Gabriel</h2><p>${fmt(w.FECHA_INICIO)} al ${fmt(w.FECHA_FIN)} · ${plan.length} compromiso(s)</p></div><div class="family-status-badge ${w.ESTADO==='APROBADA'||w.ESTADO==='CERRADA'?'good':w.ESTADO==='DEVUELTA'?'bad':'warn'}">${esc(w.ESTADO)}</div></div><div class="family-card"><h3>Plan presentado</h3>${rows}</div><div class="family-card">${controls}</div></div>`;
+}
+function reviewCurrentWeek(decision){const cw=state.currentWeek||{};const obs=qs('#reviewObservation')?qs('#reviewObservation').value:'';server('reviewWeek',[{SEMANA_ID:cw.week.ID,DECISION:decision,OBSERVACION:obs}]).then(()=>toast(decision==='APROBADA'?'Semana aprobada.':'Semana devuelta.'));}
+function closeCurrentWeek(){const cw=state.currentWeek||{},obs=qs('#reviewObservation')?qs('#reviewObservation').value:'';server('closeWeek',[{SEMANA_ID:cw.week.ID,OBSERVACION:obs}]).then(()=>toast('Semana cerrada y verificada.'));}
+function reopenCurrentWeek(){const cw=state.currentWeek||{};const reason=prompt('Motivo de reapertura:');if(!reason)return;server('reopenWeek',[{SEMANA_ID:cw.week.ID,OBSERVACION:reason}]).then(()=>toast('Semana reabierta.'));}
+
+function renderProjects(){qs('#projectsBody').innerHTML=state.projects.length?state.projects.map(p=>{const members=(p.MEMBERS||[]).map(m=>m.NOMBRE+(m.TELEFONO?' ('+m.TELEFONO+')':'')).join(', ');return `<tr><td><strong>${esc(p.TITULO)}</strong><br><span class="subtle">${esc(p.TIPO)} · ${esc(p.ALCANCE)}</span>${members?`<br><span class="subtle">Integrantes: ${esc(members)}</span>`:''}</td><td>${esc(courseName(p.CURSO_ID))}</td><td>${fmt(p.FECHA_LIMITE)}</td><td><div class="status-stack"><span class="traffic-light ${p.SEMAFORO}" title="Semáforo"></span><div><strong>${esc(p.ESTADO)}</strong>${p.FECHA_ENTREGA?`<small>Entregado: ${fmt(p.FECHA_ENTREGA)}</small>`:''}${p.NOTA?`<small>Nota: ${esc(p.NOTA)}${p.NOTA_MAXIMA?' / '+esc(p.NOTA_MAXIMA):''}</small>`:''}</div></div></td><td><div class="progress"><span style="width:${num(p.PROGRESO)}%"></span></div><span class="subtle">${num(p.PROGRESO)}% · ${num(p.ACCIONES_COMPLETADAS)}/${num(p.TOTAL_ACCIONES)} acciones</span></td><td>${esc(p.PROXIMA_ACCION||p.PROXIMO_PASO||'')}</td><td><button class="btn small secondary" onclick="editProject('${p.ID}')">Editar</button> <button class="btn small" onclick="openAction('${p.ID}')">Acción</button> <button class="btn small danger" onclick="removeItem('deactivateProject','${p.ID}','proyecto')">Retirar</button></td></tr>`;}).join(''):'<tr><td colspan="7" class="empty">No hay proyectos registrados.</td></tr>';}
+function renderTrabajo(){
+  renderActiveWork();
+  const items=[...(state.pendingItems||[])].sort(comparePendingUrgency);
+  qs('#pendingCountBadge').textContent=items.length+' pendiente'+(items.length===1?'':'s');
+  qs('#workPendingList').innerHTML=items.length?items.map(workPendingItem).join(''):'<div class="empty">No hay pendientes activos.</div>';
+  renderWorkWeek();
+  renderWorkWeekMetrics();
+  qs('#recentWorkReports').innerHTML=state.dailyReports.length?state.dailyReports.slice().sort((a,b)=>String(b.FECHA).localeCompare(String(a.FECHA))).slice(0,6).map(r=>`<div class="report-row"><strong>${fmt(r.FECHA)}</strong><div><b>${esc(projectName(r.PROYECTO_ID))}</b><small>${esc(r.ACTIVIDAD_REALIZADA)}</small></div><span class="pill">${esc(r.AVANCE_ANTES)}% → ${esc(r.AVANCE_DESPUES)}%</span></div>`).join(''):'<div class="empty">Todavía no hay avances registrados.</div>';
+}
+let workWeekOffset=0,workTimerHandle=null;
+function activeWork(){try{return JSON.parse(localStorage.getItem('gabriel_active_work')||'null')}catch(e){return null}}
+function saveActiveWork(v){if(v)localStorage.setItem('gabriel_active_work',JSON.stringify(v));else localStorage.removeItem('gabriel_active_work')}
+function urgencyInfo(p){if(!p.DATE)return{rank:5,key:'none',label:'Sin fecha'};const d=dayDiff(today(),p.DATE);if(d<0)return{rank:0,key:'overdue',label:'Vencido hace '+Math.abs(d)+' día'+(Math.abs(d)===1?'':'s')};if(d===0)return{rank:1,key:'today',label:'Vence hoy'};if(d===1)return{rank:2,key:'soon',label:'Vence mañana'};if(d<=7)return{rank:3,key:'soon',label:'Vence en '+d+' días'};return{rank:4,key:'later',label:'Vence '+fmt(p.DATE)}}
+function comparePendingUrgency(a,b){const ua=urgencyInfo(a),ub=urgencyInfo(b);if(ua.rank!==ub.rank)return ua.rank-ub.rank;if(num(a.PROGRESS)!==num(b.PROGRESS))return num(a.PROGRESS)-num(b.PROGRESS);return String(a.DATE||'9999').localeCompare(String(b.DATE||'9999'))}
+function workPendingItem(p){const u=urgencyInfo(p),aw=activeWork(),selected=aw&&aw.ID===p.ID;return `<div class="work-task ${selected?'selected':''}"><span class="urgency-dot ${u.key}"></span><div class="task-main"><strong>${esc(p.TITLE)}</strong><small>${esc(p.PROJECT||'')} · ${esc(courseName(p.COURSE))} · ${u.label}</small><div class="task-progress">Avance: ${num(p.PROGRESS)}%</div></div><div class="task-actions"><button class="btn small" onclick='startWork(${JSON.stringify(JSON.stringify(p))})'>Trabajar</button><button class="btn small secondary" onclick="openDailyFor('${p.PROJECT_ID||''}','${p.ACTION_ID||''}',${num(p.PROGRESS)})">Avance</button><button class="btn small ghost" onclick="goProject('${p.PROJECT_ID||''}')">Ver</button></div></div>`}
+function startWork(raw){const p=JSON.parse(raw);saveActiveWork({ID:p.ID,PROJECT_ID:p.PROJECT_ID,ACTION_ID:p.ACTION_ID||'',TITLE:p.TITLE,PROJECT:p.PROJECT,PROGRESS:num(p.PROGRESS),STARTED_AT:new Date().toISOString()});renderTrabajo();toast('Trabajo iniciado. El tiempo ya está corriendo.');}
+function renderActiveWork(){clearInterval(workTimerHandle);const aw=activeWork(),box=qs('#activeWorkCard');if(!aw){box.innerHTML='';box.style.display='none';return}box.style.display='block';box.innerHTML=`<div class="active-work-card"><div><span class="eyebrow">TRABAJO EN CURSO</span><h3>${esc(aw.TITLE)}</h3><p>${esc(aw.PROJECT||'')} · avance inicial ${num(aw.PROGRESS)}%</p><div class="work-timer" id="workTimer">00:00:00</div></div><div class="active-work-actions"><button class="btn secondary" onclick="openDailyFor('${aw.PROJECT_ID}','${aw.ACTION_ID||''}',${num(aw.PROGRESS)},true)">Registrar avance</button><button class="btn ghost" onclick="goProject('${aw.PROJECT_ID}')">Ver proyecto</button><button class="btn danger" onclick="cancelWork()">Detener</button></div></div>`;updateWorkTimer();workTimerHandle=setInterval(updateWorkTimer,1000)}
+function updateWorkTimer(){const aw=activeWork(),el=qs('#workTimer');if(!aw||!el)return;const sec=Math.max(0,Math.floor((Date.now()-new Date(aw.STARTED_AT).getTime())/1000));el.textContent=[Math.floor(sec/3600),Math.floor((sec%3600)/60),sec%60].map(x=>String(x).padStart(2,'0')).join(':')}
+function cancelWork(){if(confirm('¿Detener el trabajo actual? El tiempo no se guardará hasta registrar el avance.')){saveActiveWork(null);renderTrabajo()}}
+function openDailyFor(projectId,actionId,before,finish=false){openDaily();qs('#dailyProject').value=projectId||'';fillActionSelect();qs('#dailyAction').value=actionId||'';qs('#dailyForm').elements.AVANCE_ANTES.value=num(before);if(finish){const aw=activeWork();if(aw){const hrs=(Date.now()-new Date(aw.STARTED_AT).getTime())/3600000;qs('#dailyForm').elements.HORAS.value=Math.max(.25,Math.round(hrs*4)/4)}}}
+function goProject(id){showView('proyectos');setTimeout(()=>{const p=findProject(id);if(p)editProject(id)},120)}
+function moveWorkWeek(days){workWeekOffset+=days;renderWorkWeek()}
+function goCurrentWeek(){workWeekOffset=0;renderWorkWeek()}
+function goNextPendingWeek(){const dated=(state.pendingItems||[]).filter(x=>x.DATE).sort((a,b)=>String(a.DATE).localeCompare(String(b.DATE)));if(!dated.length){toast('No hay pendientes con fecha.');return;}const target=new Date(dated[0].DATE+'T12:00:00'),base=new Date(today()+'T12:00:00');const baseMon=new Date(base);baseMon.setDate(base.getDate()-((base.getDay()+6)%7));const targetMon=new Date(target);targetMon.setDate(target.getDate()-((target.getDay()+6)%7));workWeekOffset=Math.round((targetMon-baseMon)/86400000);renderWorkWeek();}
+function weekStartIso(){const d=new Date(today()+'T12:00:00');d.setDate(d.getDate()-((d.getDay()+6)%7)+workWeekOffset);return d.toISOString().slice(0,10)}
+function renderWorkWeek(){const start=weekStartIso(),days=[...Array(7)].map((_,i)=>addDays(start,i));qs('#workWeekLabel').textContent=fmt(days[0])+' al '+fmt(days[6]);qs('#workWeekCalendar').innerHTML=days.map(date=>{const events=[];(state.pendingItems||[]).filter(p=>p.DATE===date).forEach(p=>events.push(`<div class="cal-event ${urgencyInfo(p).key==='overdue'?'overdue':'deadline'}" onclick="openDailyFor('${p.PROJECT_ID||''}','${p.ACTION_ID||''}',${num(p.PROGRESS)})"><strong>${esc(p.TITLE)}</strong><span>${esc(p.PROJECT||'')} · ${num(p.PROGRESS)}%</span></div>`));(state.weekClasses||[]).filter(c=>c.FECHA===date).forEach(c=>events.push(`<div class="cal-event class-event" onclick="openAttendance('${c.CURSO_ID}','${c.SESION_ID}','${c.FECHA}','${c.REGISTRO_ID||''}')"><strong>${esc(c.HORA_INICIO)} ${esc(courseName(c.CURSO_ID))}</strong><span>${esc(c.ESTADO||'Sin registrar')}</span></div>`));return `<div class="week-day"><div class="week-day-head ${date===today()?'today':''}">${dayName(date)} ${date.slice(8,10)}</div><div class="week-events">${events.join('')||'<span class="subtle" style="font-size:11px">Sin eventos</span>'}</div></div>`}).join('')}
+function renderWorkWeekMetrics(){const start=weekStartIso(),end=addDays(start,6),reports=(state.dailyReports||[]).filter(r=>r.FECHA>=start&&r.FECHA<=end),hours=reports.reduce((s,r)=>s+num(r.HORAS),0),days=new Set(reports.map(r=>r.FECHA)).size,projects=new Set(reports.map(r=>r.PROYECTO_ID).filter(Boolean)).size,gain=reports.reduce((s,r)=>s+Math.max(0,num(r.AVANCE_DESPUES)-num(r.AVANCE_ANTES)),0);qs('#workWeekMetrics').innerHTML=[["Horas",hours.toFixed(1)],["Días activos",days],["Proyectos",projects],["Avance acumulado","+"+gain+"%"]].map(x=>`<div class="week-metric"><small>${x[0]}</small><strong>${x[1]}</strong></div>`).join('')}
+function dayDiff(a,b){return Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/86400000)}
+function dayName(iso){return ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'][new Date(iso+'T12:00:00').getDay()]}
+function attendanceStatusMeta(status){const s=status||'Pendiente de marcar';if(s==='Asistió')return{cls:'present',label:'Asistió',dot:'🟢'};if(s==='Tardanza')return{cls:'late',label:'Tardanza',dot:'🟡'};if(['No asistió','Faltó'].includes(s))return{cls:'absent',label:'No asistió',dot:'⚫'};if(['Justificada','Falta justificada'].includes(s))return{cls:'justified',label:'Justificada',dot:'🔵'};return{cls:'pending',label:'Pendiente de marcar',dot:'🔴'};}
+function renderAsistencia(){
+  const classes=(state.weekClasses||[]).slice().sort((a,b)=>String(a.FECHA).localeCompare(String(b.FECHA))||String(a.HORA_INICIO).localeCompare(String(b.HORA_INICIO)));
+  const now=today();
+  const todayClasses=classes.filter(c=>c.FECHA===now);
+  const elapsed=classes.filter(c=>c.FECHA<=now);
+  const attended=elapsed.filter(c=>['Asistió','Tardanza'].includes(c.ESTADO)).length;
+  const absences=elapsed.filter(c=>['No asistió','Faltó'].includes(c.ESTADO)).length;
+  const pending=elapsed.filter(c=>!c.REGISTRO_ID||['Sin registrar','Pendiente de marcar',''].includes(c.ESTADO||'')).length;
+  const marked=elapsed.filter(c=>c.REGISTRO_ID).length;
+  const pct=elapsed.length?Math.round(attended/elapsed.length*100):0;
+
+  qs('#attendanceTodayDate').textContent=fmt(now);
+  qs('#todayClassCount').textContent=todayClasses.length+' '+(todayClasses.length===1?'clase':'clases');
+  qs('#todayAttendanceList').innerHTML=todayClasses.length?todayClasses.map(c=>{const m=attendanceStatusMeta(c.ESTADO);return `<div class="attendance-today-row"><div class="attendance-time">${esc(c.HORA_INICIO)}<small>${esc(c.HORA_FIN)}</small></div><div class="attendance-class"><strong>${esc(courseName(c.CURSO_ID))}</strong><span>${esc(c.MODALIDAD||'')} ${c.AULA_ENLACE?'· '+esc(c.AULA_ENLACE):''}</span></div><span class="attendance-status ${m.cls}">${m.dot} ${m.label}</span><button class="btn small ${m.cls==='pending'?'':'secondary'}" onclick="openAttendance('${c.CURSO_ID}','${c.SESION_ID}','${c.FECHA}','${c.REGISTRO_ID||''}')">${c.REGISTRO_ID?'Editar':'Marcar'}</button></div>`}).join(''):'<div class="empty compact-empty">Hoy no hay clases programadas.</div>';
+
+  qs('#attendanceMetrics').innerHTML=`<div class="attendance-metric"><small>Clases realizadas</small><strong>${elapsed.length}</strong></div><div class="attendance-metric"><small>Asistencias</small><strong>${attended}</strong></div><div class="attendance-metric"><small>Faltas</small><strong>${absences}</strong></div><div class="attendance-metric ${pending?'alert':''}"><small>Pendientes de marcar</small><strong>${pending}</strong></div>`;
+  qs('#attendanceRateBadge').textContent=pct+'%';
+  qs('#attendanceRateBadge').className=pct>=80?'good':pct>=60?'warn':'bad';
+  qs('#attendanceProgressText').textContent=attended+' asistencias de '+elapsed.length+' clases realizadas';
+  qs('#attendanceBar').style.width=pct+'%';
+
+  const upcoming=classes.filter(c=>c.FECHA>=now);
+  qs('#upcomingClassesList').innerHTML=upcoming.length?upcoming.map(c=>{const m=attendanceStatusMeta(c.ESTADO);const isToday=c.FECHA===now;return `<div class="upcoming-class-row"><div><strong>${isToday?'Hoy':esc(c.DIA)}</strong><span>${fmt(c.FECHA)}</span></div><div><strong>${esc(courseName(c.CURSO_ID))}</strong><span>${esc(c.HORA_INICIO)}–${esc(c.HORA_FIN)}</span></div><span class="attendance-status ${isToday?m.cls:'upcoming'}">${isToday?m.dot+' '+m.label:'Próxima'}</span><button class="btn small secondary" onclick="openAttendance('${c.CURSO_ID}','${c.SESION_ID}','${c.FECHA}','${c.REGISTRO_ID||''}')">${c.REGISTRO_ID?'Editar':'Marcar'}</button></div>`}).join(''):'<div class="empty compact-empty">No quedan clases programadas esta semana.</div>';
+
+  const byCourse={};classes.forEach(c=>{const id=c.CURSO_ID;if(!byCourse[id])byCourse[id]={total:0,done:0,attended:0,absent:0,pending:0};const x=byCourse[id];x.total++;if(c.FECHA<=now){x.done++;if(['Asistió','Tardanza'].includes(c.ESTADO))x.attended++;else if(['No asistió','Faltó'].includes(c.ESTADO))x.absent++;else if(!c.REGISTRO_ID)x.pending++;}});
+  const summaries=Object.entries(byCourse);
+  qs('#attendanceCourseSummary').innerHTML=summaries.length?summaries.map(([id,x])=>{const cpct=x.done?Math.round(x.attended/x.done*100):0;return `<div class="course-attendance-row"><div><strong>${esc(courseName(id))}</strong><span>${x.attended} asistencias · ${x.absent} faltas · ${x.pending} pendientes</span></div><div class="course-rate"><strong>${cpct}%</strong><div class="mini-progress"><span style="width:${cpct}%"></span></div></div></div>`}).join(''):'<div class="empty compact-empty">Aún no hay cursos con horario.</div>';
+}
+function renderTableros(){
+  const d=state.dashboard, root=qs('#dashboardRoot'), mi=state.masterIndicators||{}, org=mi.organization||{}, exe=mi.execution||{};
+  const familyOnly=state.permissions.familyView&&!state.permissions.admin&&!state.permissions.editWork;
+  if(!familyOnly){
+    const risks=state.projects.filter(p=>p.SEMAFORO==='ROJO'||p.SEMAFORO==='AMARILLO').sort((a,b)=>String(a.FECHA_LIMITE).localeCompare(String(b.FECHA_LIMITE)));
+    root.innerHTML=`<div class="section-title"><div><h3>Tableros de control</h3><span class="subtle">Organización y ejecución se miden por separado.</span></div></div><div class="master-kpis" style="margin-bottom:14px"><div class="master-kpi"><small>Cobertura</small><strong>${org.coverage==null?'—':org.coverage+'%'}</strong></div><div class="master-kpi"><small>Omisiones</small><strong>${org.omissions||0}</strong></div><div class="master-kpi"><small>Cumplimiento</small><strong>${exe.compliance==null?'—':exe.compliance+'%'}</strong></div><div class="master-kpi"><small>Cursos en riesgo</small><strong>${mi.redCourses||0}</strong></div></div><div class="grid compact">${metricCards([["Proyectos activos",d.activeProjectsCount],["Proyectos completados",d.completedProjectsCount],["Asistencia",d.attendanceRate==null?'Sin datos':d.attendanceRate+'%'],["Clases registradas",d.attendanceCount]])}</div><div class="two"><div class="card"><div class="section-title"><h3>Proyectos próximos y en riesgo</h3></div><div class="list">${risks.length?risks.map(p=>`<div class="item"><strong><span class="traffic-light ${p.SEMAFORO}"></span> ${esc(p.TITULO)}</strong><small>${esc(courseName(p.CURSO_ID))} · ${fmt(p.FECHA_LIMITE)} · ${esc(p.ESTADO)} · ${p.PROGRESO}%</small></div>`).join(''):'<div class="empty">No hay proyectos en riesgo.</div>'}</div></div><div class="card"><div class="section-title"><h3>Lectura rápida del estado</h3></div><div class="note-box"><strong>Lectura del estado</strong><br><span class="subtle">${esc(d.studentName)} tiene ${d.totalPendingCount} pendientes activos. ${d.redProjectsCount?('Hay '+d.redProjectsCount+' proyecto(s) en rojo. '):''}${d.todayPendingCount?('Hoy vencen o siguen abiertos '+d.todayPendingCount+' pendientes. '):''}${d.todayClasses.length?('Hoy tiene '+d.todayClasses.length+' clase(s). '):'Hoy no tiene clases registradas. '}</span></div></div></div>`;
+    return;
+  }
+
+  const now=today(), start=weekStartIso(), end=addDays(start,6);
+  const todayReports=(state.dailyReports||[]).filter(r=>String(r.FECHA).slice(0,10)===now);
+  const weekReports=(state.dailyReports||[]).filter(r=>String(r.FECHA).slice(0,10)>=start&&String(r.FECHA).slice(0,10)<=end);
+  const todayHours=todayReports.reduce((s,r)=>s+num(r.HORAS),0);
+  const weekHours=weekReports.reduce((s,r)=>s+num(r.HORAS),0);
+  const weekDays=new Set(weekReports.map(r=>String(r.FECHA).slice(0,10))).size;
+  const weekProjects=new Set(weekReports.map(r=>r.PROYECTO_ID).filter(Boolean)).size;
+  const todayGain=todayReports.reduce((s,r)=>s+Math.max(0,num(r.AVANCE_DESPUES)-num(r.AVANCE_ANTES)),0);
+  const attendance=d.attendanceRate==null?0:num(d.attendanceRate);
+  const risks=(state.projects||[]).filter(p=>!['Entregado','Calificado','Cerrado','Completado'].includes(p.ESTADO)).sort((a,b)=>String(a.FECHA_LIMITE||'9999-12-31').localeCompare(String(b.FECHA_LIMITE||'9999-12-31')));
+  const soon=risks.filter(p=>p.FECHA_LIMITE&&p.FECHA_LIMITE>=now).slice(0,5);
+  const alerts=[];
+  if(d.overduePendingCount)alerts.push(['🔴',d.overduePendingCount+' pendiente(s) vencido(s)','Necesita atención inmediata.']);
+  if(d.todayAttendancePendingCount)alerts.push(['🔴',d.todayAttendancePendingCount+' asistencia(s) de hoy sin marcar','Falta registrar la asistencia.']);
+  if(d.missingScheduleCount)alerts.push(['⚠️',d.missingScheduleCount+' curso(s) sin horario','El calendario y las clases de hoy quedan incompletos.']);
+  if(!d.reportedToday&&d.totalPendingCount)alerts.push(['🟠','Hoy todavía no registró trabajo','Hay pendientes activos pero no hay avance registrado hoy.']);
+  soon.slice(0,2).forEach(p=>{const diff=Math.round((new Date(p.FECHA_LIMITE+'T12:00:00')-new Date(now+'T12:00:00'))/86400000);if(diff<=3)alerts.push([diff<=1?'🔴':'🟡',(diff===0?'Vence hoy':diff===1?'Vence mañana':'Vence en '+diff+' días')+': '+p.TITULO,courseName(p.CURSO_ID)+' · '+num(p.PROGRESO)+'% de avance']);});
+  const bad=d.overduePendingCount||d.todayAttendancePendingCount;
+  const warn=!bad&&(d.missingScheduleCount||(!d.reportedToday&&d.totalPendingCount)||soon.some(p=>p.SEMAFORO==='AMARILLO'));
+  const status=bad?'Requiere atención':warn?'Por revisar':'En orden';
+  const statusCls=bad?'bad':warn?'warn':'good';
+  const statusText=bad?'Hay pendientes que necesitan seguimiento hoy.':warn?'Hay información o tareas próximas que conviene revisar.':'No hay alertas urgentes en este momento.';
+  const todayText=todayReports.length?`Hoy registró <strong>${todayHours.toFixed(1)} h</strong> de trabajo en <strong>${new Set(todayReports.map(r=>r.PROYECTO_ID).filter(Boolean)).size}</strong> proyecto(s). Avance acumulado del día: <strong>+${todayGain}%</strong>.`:(d.totalPendingCount?'Hoy todavía no hay trabajo registrado.':'Hoy no tiene pendientes activos registrados.');
+  const weekPct=Math.min(100,Math.round((weekDays/5)*100));
+  root.innerHTML=`<div class="family-wrap"><div class="master-kpis"><div class="master-kpi"><small>Organización</small><strong>${org.coverage==null?'—':org.coverage+'%'}</strong></div><div class="master-kpi"><small>Omisiones</small><strong>${org.omissions||0}</strong></div><div class="master-kpi"><small>Cumplimiento</small><strong>${exe.compliance==null?'—':exe.compliance+'%'}</strong></div><div class="master-kpi"><small>Riesgo alto</small><strong>${mi.redCourses||0}</strong></div></div>
+    <div class="family-status"><div><h2>${esc(d.studentName)} hoy</h2><p>${esc(statusText)}</p></div><div class="family-status-badge ${statusCls}">${status}</div></div>
+    <div class="family-metrics"><div class="family-metric"><small>Trabajo hoy</small><strong>${todayHours.toFixed(1)} h</strong></div><div class="family-metric"><small>Por vencer</small><strong>${soon.length}</strong></div><div class="family-metric"><small>Atrasados</small><strong>${d.overduePendingCount||0}</strong></div><div class="family-metric"><small>Asistencia</small><strong>${d.attendanceRate==null?'—':attendance+'%'}</strong></div></div>
+    <div class="family-grid">
+      <div class="family-card"><h3>Qué hizo hoy</h3><div class="family-today">${todayText}</div>${todayReports.slice(-3).reverse().map(r=>`<div class="family-alert"><div>✓</div><div><strong>${esc((state.projects.find(p=>p.ID===r.PROYECTO_ID)||{}).TITULO||'Actividad académica')}</strong><span>${esc(r.ACTIVIDAD_REALIZADA||'Actividad registrada')} · ${num(r.AVANCE_ANTES)}% → ${num(r.AVANCE_DESPUES)}%</span></div></div>`).join('')}</div>
+      <div class="family-card"><h3>Requiere atención</h3>${alerts.length?alerts.slice(0,5).map(a=>`<div class="family-alert"><div>${a[0]}</div><div><strong>${esc(a[1])}</strong><span>${esc(a[2])}</span></div></div>`).join(''):'<div class="family-empty">No hay alertas importantes.</div>'}</div>
+    </div>
+    <div class="family-grid">
+      <div class="family-card"><h3>Próximos vencimientos</h3>${soon.length?soon.map(p=>`<div class="family-deadline"><div><strong>${fmt(p.FECHA_LIMITE)}</strong><span>${p.SEMAFORO==='ROJO'?'Urgente':p.SEMAFORO==='AMARILLO'?'Próximo':'Programado'}</span></div><div><strong>${esc(p.TITULO)}</strong><span>${esc(courseName(p.CURSO_ID))}</span></div><div style="text-align:right"><strong>${num(p.PROGRESO)}%</strong></div></div>`).join(''):'<div class="family-empty">No hay próximos vencimientos registrados.</div>'}</div>
+      <div class="family-card"><h3>Esta semana</h3><div><strong>${weekPct}% de días con registro</strong></div><div class="family-progress"><span style="width:${weekPct}%"></span></div><div class="family-foot">${weekDays}/5 días con actividad · ${weekHours.toFixed(1)} h trabajadas · ${weekProjects} proyecto(s) atendido(s)</div><h3 style="margin-top:16px">Asistencia</h3><div><strong>${d.attendanceRate==null?'Sin datos':attendance+'%'}</strong></div><div class="family-progress"><span style="width:${d.attendanceRate==null?0:attendance}%"></span></div><div class="family-foot">${d.attendanceCount||0} clases registradas · ${d.absences||0} falta(s) · ${d.todayAttendancePendingCount||0} pendiente(s) de marcar hoy</div></div>
+    </div>
+  </div>`;
+}
+function openCourse(){resetForm('courseForm');qs('#courseModalTitle').textContent='Agregar curso';openModal('courseModal');}
+function editCourse(id){resetForm('courseForm');fillForm('courseForm',findCourse(id));qs('#courseModalTitle').textContent='Editar curso';openModal('courseModal');}
+function openSession(courseId=''){resetForm('sessionForm');fillSelects();if(courseId)qs('#sessionForm').elements.CURSO_ID.value=courseId;qs('#sessionModalTitle').textContent=courseId?'Agregar horario al curso':'Agregar horario';openModal('sessionModal');}
+function editSession(id){resetForm('sessionForm');fillSelects();fillForm('sessionForm',findSession(id));qs('#sessionModalTitle').textContent='Editar horario';openModal('sessionModal');}
+function openProject(courseId=''){resetForm('projectForm');fillSelects();if(courseId)qs('#projectForm').elements.CURSO_ID.value=courseId;qs('#projectModalTitle').textContent='Nuevo proyecto académico';qs('#membersList').innerHTML='';toggleMembers();toggleProjectConditionalFields();openModal('projectModal');}
+function editProject(id){resetForm('projectForm');fillSelects();const p=findProject(id);fillForm('projectForm',p);qs('#projectModalTitle').textContent='Editar proyecto académico';qs('#membersList').innerHTML='';(p.MEMBERS||[]).forEach(m=>addMemberRow(m.NOMBRE,m.TELEFONO));toggleMembers();toggleProjectConditionalFields();openModal('projectModal');}
+function toggleMembers(){const grouped=qs('#projectScope').value==='Grupal';qs('#membersSection').classList.toggle('show',grouped);if(grouped&&!qs('#membersList').children.length)addMemberRow();if(!grouped)qs('#membersList').innerHTML='';}
+function addMemberRow(name='',phone=''){const row=document.createElement('div');row.className='member-row';row.innerHTML=`<div class="field"><label>Nombre</label><input class="member-name" value="${esc(name)}"></div><div class="field"><label>Número telefónico</label><input class="member-phone" inputmode="tel" value="${esc(phone)}"></div><button type="button" class="btn danger small" onclick="this.parentElement.remove()">Eliminar</button>`;qs('#membersList').appendChild(row);}
+function collectMembers(){return qsa('#membersList .member-row').map(row=>({NOMBRE:row.querySelector('.member-name').value.trim(),TELEFONO:row.querySelector('.member-phone').value.trim()})).filter(m=>m.NOMBRE||m.TELEFONO);}
+function toggleProjectConditionalFields(){const status=qs('#projectStatus').value;const delivered=['Entregado','Calificado','Cerrado'].includes(status);const graded=['Calificado','Cerrado'].includes(status);['deliveryDateField','evidenceField'].forEach(id=>qs('#'+id).classList.toggle('show',delivered));['gradeField','maxGradeField','teacherObservationField'].forEach(id=>qs('#'+id).classList.toggle('show',graded));}
+function saveProjectForm(){qs('#membersJson').value=JSON.stringify(qs('#projectScope').value==='Grupal'?collectMembers():[]);server('saveProject',[formData('projectForm')]).then(()=>{closeModal('projectModal');toast('Proyecto guardado correctamente.');});}
+function openAction(projectId){resetForm('actionForm');qs('#actionForm').elements.PROYECTO_ID.value=projectId;openModal('actionModal');}
+function openDaily(){resetForm('dailyForm');fillSelects();qs('#dailyForm').elements.FECHA.value=today();fillActionSelect();openModal('dailyModal');}
+function openAttendance(courseId='',sessionId='',date='',recordId=''){resetForm('attendanceForm');fillSelects();qs('#attendanceForm').elements.CURSO_ID.value=courseId||state.weekClasses[0]?.CURSO_ID||'';qs('#attendanceForm').elements.SESION_ID.value=sessionId||'';qs('#attendanceForm').elements.FECHA.value=date||today(); if(recordId){const rec=state.attendance.find(a=>a.ID===recordId);if(rec)fillForm('attendanceForm',rec);qs('#attendanceForm').elements.ID.value=recordId;} openModal('attendanceModal');}
+function saveGeneric(formId,fn,modalId){server(fn,[formData(formId)]).then(()=>{if(fn==='saveDailyReport')saveActiveWork(null);closeModal(modalId);toast('Guardado correctamente.');});}
+function removeItem(fn,id,label){if(confirm('¿Deseas retirar este '+label+'? Se conservará en el historial.'))server(fn,[id]).then(()=>toast('Registro retirado.'));}
+function fillSelects(){const courses=state.courses.map(c=>`<option value="${c.ID}">${esc(c.NOMBRE)}</option>`).join('');['sessionCourse','projectCourse','attendanceCourse','activityCourse','weekPlanCourse'].forEach(id=>{if(qs('#'+id))qs('#'+id).innerHTML=courses;});if(qs('#dailyProject'))qs('#dailyProject').innerHTML='<option value="">Sin proyecto</option>'+state.projects.map(p=>`<option value="${p.ID}">${esc(p.TITULO)}</option>`).join('');fillActionSelect();}
+function fillActionSelect(){if(!qs('#dailyAction'))return;const pid=qs('#dailyProject').value;const list=state.actions.filter(a=>!pid||a.PROYECTO_ID===pid);qs('#dailyAction').innerHTML='<option value="">Sin acción específica</option>'+list.map(a=>`<option value="${a.ID}">${esc(a.TITULO)}</option>`).join('');}
+function fillForm(formId,obj){if(!obj)return;const f=qs('#'+formId);Object.keys(obj).forEach(k=>{if(f.elements[k])f.elements[k].value=obj[k]??'';});}
+function resetForm(formId){const f=qs('#'+formId);f.reset();if(f.elements.ID)f.elements.ID.value='';}
+function formData(formId){return Object.fromEntries(new FormData(qs('#'+formId)).entries());}
+function openModal(id){qs('#'+id).classList.add('open');}
+function closeModal(id){qs('#'+id).classList.remove('open');}
+function metricCards(items){return items.map(x=>`<div class="card metric"><small>${esc(x[0])}</small><strong>${esc(x[1])}</strong></div>`).join('');}
+function field(name,label,value,type='text'){return `<div class="field"><label>${label}</label><input type="${type}" name="${name}" value="${esc(value||'')}"></div>`;}
+function pendingItem(p){return `<div class="item"><strong>${esc(p.TITLE)}</strong><small>${p.PROJECT?esc(p.PROJECT)+' · ':''}${p.DATE?'vence '+fmt(p.DATE)+' · ':''}${esc(statusText(p.STATUS))}</small></div>`;}
+function courseName(id){return (state.courses.find(c=>c.ID===id)||{}).NOMBRE||'Sin curso';}
+function projectName(id){return (state.projects.find(p=>p.ID===id)||{}).TITULO||'Sin proyecto';}
+function findCourse(id){return state.courses.find(x=>x.ID===id);}function findSession(id){return state.sessions.find(x=>x.ID===id);}function findProject(id){return state.projects.find(x=>x.ID===id);}
+function statusText(v){return v||'Pendiente';}
+function fmt(v){if(!v)return'';const t=String(v).slice(0,10);const p=t.split('-');return p.length===3?`${p[2]}/${p[1]}/${p[0]}`:v;}
+function today(){return new Date().toISOString().slice(0,10);}function addDays(iso,n){const d=new Date(iso+'T12:00:00');d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}function num(v){return Number(v||0);}function sel(a,b){return String(a||'')===String(b)?'selected':'';}
+function toast(msg,error=false){const t=qs('#toast');t.textContent=msg;t.style.background=error?'#a8322b':'#123251';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+</script>
+</body>
+</html>

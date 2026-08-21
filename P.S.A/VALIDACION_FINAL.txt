@@ -1,0 +1,58 @@
+CENTRO DE PLANIFICACIÓN Y SEGUIMIENTO ACADÉMICO — GABRIEL
+VALIDACIÓN FINAL DE ARQUITECTURA, UX/UI Y CÓDIGO
+
+VERSIÓN BACKEND: 3.0.0
+
+COBERTURA FUNCIONAL DEL MODELO MAESTRO
+[OK] Inicio / panel académico
+[OK] Planificación del ciclo
+[OK] Cursos y horarios + detección de cruces
+[OK] Agenda académica maestra (DB_Actividades)
+[OK] Organización de semana (DB_Semanas + DB_Plan_Semanal)
+[OK] Checklist Blackboard / cursos / calendario
+[OK] Control de semana vacía
+[OK] Revisión de Gloria: aprobar / devolver
+[OK] Bloqueo de semana aprobada
+[OK] Ejecución y asistencia
+[OK] Validación/observación de evidencias individuales por Gloria
+[OK] Cierre semanal con controles críticos
+[OK] Reapertura excepcional con trazabilidad
+[OK] Detección de posibles omisiones
+[OK] Indicadores de organización y ejecución separados
+[OK] Cobertura de compromisos
+[OK] Cumplimiento semanal
+[OK] Asistencia
+[OK] Evidencias validadas
+[OK] Entregas a tiempo (cuando existan datos de entrega)
+[OK] Riesgo por curso: atrasos + asistencia + reincidencia
+[OK] Rachas de semanas cerradas
+[OK] Motor DB_Mensajes y mensajes por rol/contexto
+[OK] Dashboard familiar
+[OK] Administración / auditoría
+
+ROLES
+[OK] Gabriel: registra y ejecuta; no aprueba su propia semana
+[OK] Gloria: supervisa, aprueba/devuelve, valida/observa y cierra
+[OK] Alejandra: solo lectura familiar
+[OK] Gerardo/Admin: control completo y reapertura excepcional
+
+UX/UI
+[OK] Guía de rol y siguiente paso visible
+[OK] Ruta visual de 5 pasos de la semana
+[OK] Indicadores clave visibles sin entrar a tablas
+[OK] Alertas de omisiones y riesgos
+[OK] Jerarquía visual premium y responsive
+[OK] Navegación agrupada por preparación/seguimiento/configuración
+[OK] Identidad aprobada y firma profesional
+
+VALIDACIONES TÉCNICAS
+[OK] Código.gs: node --check
+[OK] JavaScript de Index.html: node --check
+[OK] No hay IDs HTML duplicados
+[OK] Todas las llamadas server(...) tienen función backend
+[OK] Todas las funciones onclick principales existen
+[OK] Las cinco tablas maestras antes desconectadas están integradas
+[OK] Escritura por encabezado físico para compatibilidad con columnas heredadas
+
+NOTA DE PRODUCCIÓN
+La cobertura de código y arquitectura está cerrada. La única validación que no puede sustituirse localmente es ejecutar el despliegue real de Google Apps Script contra servicios de Google (SpreadsheetApp, CacheService, PropertiesService y HtmlService) y realizar una prueba de aceptación con datos reales. Esto no es funcionalidad pendiente; es la prueba final de despliegue.
