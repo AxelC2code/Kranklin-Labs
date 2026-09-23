@@ -80,3 +80,35 @@ y dejar vacíos horarios, proyectos, acciones, actividades, semanas, reportes, a
 **GitHub Reference v1.0 — Code.gs FINAL v8 + Index FINAL v5.**
 
 A partir de esta versión, cualquier mejora debe hacerse sobre este repositorio maestro para evitar divergencias entre copias.
+
+
+                    PROYECTO FINAL
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ Proyecto HTML actual │
+              └──────────┬──────────┘
+                         │
+                 detectar problemas
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ Mejoras necesarias  │
+              └──────────┬──────────┘
+                         │
+             ┌───────────┼───────────┐
+             ▼           ▼           ▼
+          Git/GitHub  Historias    Problema
+                     de usuario    del proyecto
+             │           │           │
+             └───────────┼───────────┘
+                         ▼
+                  Desarrollo/mejora
+                         │
+                         ▼
+                 Pruebas + evidencias
+                         │
+                         ▼
+                INFORME FINAL ÚNICO
+
+
