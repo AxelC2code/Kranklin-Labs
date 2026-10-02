@@ -1,0 +1,3 @@
+Archivo de prueba para el ejercicio 10.
+Curso: Tecnicas de Programacion Orientada a Objetos.
+Tema: manejo de excepciones con throws IOException.
